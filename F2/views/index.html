@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FH Admin</title>
+    <meta charset="utf-8">
+	<meta http-equiv="expires" content="0">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta name="x5-orientation" content="portrait">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimal-ui,maximum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<link rel="stylesheet" type="text/css" href="../assets/css/ws-reset.css">
+	<link rel="stylesheet" type="text/css" href="../assets/font/iconfont.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/ws-style.css">
+	<script type="text/javascript" src="../assets/js/Adaptive.js"></script>
+	<script type="text/javascript" src="../assets/js/jquery-3.1.1.min.js"></script>
+	
+	<!-- vue -->
+	<script src="../assets/js-vue/vue.js"></script>
+    <!--全局配置-->
+    <script src="../assets/js-v/config.js"></script>
+	
+</head>
+
+<body>
+<div id="app">
+
+<!-- 首页 + 个人中心内容 start -->
+<div class="index-admin" v-show="indexActive || usercenterActive">
+	<div class="admin-headimg">
+    	<img v-bind:src="userPhoto"/>
+    </div>
+	<div class="admin-infor">
+    	<a><span>{{user}}</span></a>
+        <p><span>{{NAME}}</span></p>
+    </div>
+</div>
+<div class="index-tips" v-show="indexActive || usercenterActive">
+	<div class="tips-mess">
+    	<ul>
+        	<li>
+            	<a href="im/index.html">
+            		<div class="liao-image"><i class="iconfont icon-icon3"></i><sup></sup></div>
+                	<p class="liao-text">即时聊天</p>
+                </a>
+            </li>
+            <li>
+            	<a href="task/rutask_list.html">
+            		<div class="mess-image"><i class="iconfont icon-weifenxiaopcjiemianzhuanhuan"></i><sup id="taskCount">{{taskCount}}</sup></div>
+                	<p class="mess-text">待办任务</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="tips-sell">
+    </div>
+</div>
+<!-- 首页 + 个人中心内容 end -->
+
+<!-- 首页内容 start -->
+<div class="index-content" v-show="indexActive">
+	<ul>
+    	<li onclick="javascript:window.location.href='task/task_index.html?FMSG=task'">
+        	<div class="bg-dl"><i class="iconfont icon-weifenxiaopcjiemianzhuanhuan"></i></div>
+            <p>任务管理</p>
+        </li>
+        <li onclick="javascript:window.location.href='oa/oa_list.html'">
+        	<div class="bg-oa"><i class="iconfont icon-oa" style="font-size:.45rem;"></i></div>
+            <p>审批管理</p>
+        </li>
+    </ul>
+    <ul><li></li></ul>
+</div>
+<!-- 首页内容 end -->
+
+<!-- 站内信内容 start -->
+<header class="top-title" v-show="fhsmsActive">
+	<ul>
+    	<li v-on:click="indexActive=true,fhsmsActive=false,myimActive=false,usercenterActive=false"><i class="iconfont icon-zuosvg"></i><span>返回</span></li>
+        <li>站内信件</li>
+    </ul>
+</header>
+<div class="list-cont" v-show="fhsmsActive">
+	<a href="fhsms/fhsms_list.html?TYPE=1">
+        <ul>
+            <li><i class="iconfont icon-xin list-img-or"></i></li>
+            <li>
+            	<span>收信箱</span><i class="iconfont icon-yousvg"></i>
+            </li>
+        </ul>
+    </a>
+    <a href="fhsms/fhsms_list.html?TYPE=2">
+        <ul>
+            <li><i class="iconfont icon-xin list-img-zi"></i></li>
+            <li>
+            	<span>发信箱</span><i class="iconfont icon-yousvg"></i>
+            </li>
+        </ul>
+    </a>
+</div>
+<!-- 站内信内容 end -->
+
+<!-- 我的通讯内容 start -->
+<header class="top-title" v-show="myimActive">
+	<ul>
+    	<li v-on:click="indexActive=true,fhsmsActive=false,myimActive=false,usercenterActive=false"><i class="iconfont icon-zuosvg"></i><span>返回</span></li>
+        <li>我的通讯</li>
+    </ul>
+</header>
+<div class="list-cont" v-show="myimActive">
+	<a href="im/friends_list.html">
+        <ul>
+            <li><i class="iconfont icon-shanghuliebiao list-img-or"></i></li>
+            <li>
+            	<span>好友管理</span><i class="iconfont icon-yousvg"></i>
+            </li>
+        </ul>
+    </a>
+    <a href="im/fgroup_list.html">
+        <ul>
+            <li><i class="iconfont icon-fenlei list-img-zi"></i></li>
+            <li>
+            	<span>好友分组</span><i class="iconfont icon-yousvg"></i>
+            </li>
+        </ul>
+    </a>
+    <a href="im/qgroup_list.html">
+        <ul>
+            <li><i class="iconfont icon-kucunguanli list-img-sl"></i></li>
+            <li>
+            	<span>我的群组</span><i class="iconfont icon-yousvg"></i>
+            </li>
+        </ul>
+    </a>
+</div>
+<!-- 我的通讯内容 end -->
+
+<!-- 个人中心内容start -->
+<div class="admin-cont" v-show="usercenterActive">
+    <a href="user/user_photo.html">
+        <ul>
+            <li><i class="iconfont icon-icon09 admin-img-dz"></i></li>
+            <li>
+            	<span>修改头像</span><i class="iconfont icon-yousvg"></i>
+            </li>
+        </ul>
+    </a>
+    <a href="user/user_info.html">
+        <ul>
+            <li><i class="iconfont icon-dailixinxi admin-img-td"></i></li>
+            <li>
+            	<span>修改资料</span><i class="iconfont icon-yousvg"></i>
+            </li>
+        </ul>
+    </a>
+</div>
+<div class="cont-gd" v-show="usercenterActive">
+	<a v-on:click="logOut">
+    	<ul>
+        	<li><i class="iconfont icon-ai238 admin-img-gd"></i></li>
+            <li class="gd-bor">
+            	<span>退出系统</span>
+            </li>
+        </ul>
+    </a>
+</div>  
+<!-- 个人中心内容end -->
+
+<div id="fhsmsobj"></div>
+<footer class="index-footer">
+	<ul>
+    	<li>
+        	<a v-bind:class="{'footer-color':indexActive}" v-on:click="indexActive=true,fhsmsActive=false,myimActive=false,usercenterActive=false">
+        		<i class="iconfont icon-shouye"></i>
+            	<p>首页</p>
+            </a>
+        </li>
+        <li>
+        	<a v-bind:class="{'footer-color':fhsmsActive}" v-on:click="indexActive=false,fhsmsActive=true,myimActive=false,usercenterActive=false">
+        		<i class="iconfont icon-xin"></i><span>{{fhsmsCount}}</span>
+            	<p id="fhsmstss">站内信件</p>
+            </a>
+        </li>
+        <li>
+        	<a v-bind:class="{'footer-color':myimActive}" v-on:click="indexActive=false,fhsmsActive=false,myimActive=true,usercenterActive=false">
+        		<i class="iconfont icon-icon3"></i>
+            	<p>我的通讯</p>
+            </a>
+        </li>
+        <li>
+        	<a v-bind:class="{'footer-color':usercenterActive}" v-on:click="indexActive=false,fhsmsActive=false,myimActive=false,usercenterActive=true">
+        		<i class="iconfont icon-icon09"></i>
+            	<p>个人中心</p>
+            </a>
+        </li>
+    </ul>
+</footer>
+</div>
+
+<script type="text/javascript" src="../assets/js-v/online.js"></script>
+<script type="text/javascript" src="../assets/js-v/head.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.tips.js"></script>
+</body>
+</html>
