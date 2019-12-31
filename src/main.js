@@ -22,10 +22,6 @@ Vue.use(VuePreview, {
     tapToToggleControls: false
 })
 
-//导入文件上传插件
-const VueUploadComponent = require('vue-upload-component')
-Vue.component('file-upload', VueUploadComponent)
-
 var store = new Vuex.Store({
     state:{
         companyInfoList: [
