@@ -36,7 +36,11 @@ import caseHandle from './component/mywork/CaseHandle.vue';
 
 import complaintRegistration from './component/mywork/ComplaintRegistration.vue';  //投诉登记表
 import caseRegisterPage from './component/mywork/CaseRegisterPage.vue';  //立案审批表
+import caseDeliver from './component/mywork/CaseDeliverPage.vue';  //立案审批表
+import carryOutPage from './component/mywork/CarryOutByItselfPage.vue';  //立案审批表
+import reformPage from './component/mywork/ReformByItselfPage.vue';  //立案审批表
 import trialTransferPage from './component/mywork/TrialTransferPage.vue';  //移送审批表
+import trialTransferPolicePage from './component/mywork/TrialTransferPolicePage.vue';  //移送审批表
 import fileSendPage from './component/mywork/FileSendPage.vue';  //调查询问通知书
 import caseEndPage from './component/mywork/CaseEndPage.vue';  //结案审批表
 import planPunishPage from './component/mywork/PlanPunishPage.vue';  //行政处罚决定书
@@ -94,6 +98,9 @@ var router = new VueRouter({
       //  { path: '/mywork/recordpage' , component:  recordPage, name: "recordpage"},
        { path: '/mywork/complaintregistration/:formKey0' , component: complaintRegistration, name: "complaintregistration"},
        { path: '/mywork/caseregisterpage/:formKey0' , component: caseRegisterPage, name: "caseregisterpage"},
+       { path: '/mywork/casedeliver/:formKey0' , component: caseDeliver, name: "casedeliver"},
+       { path: '/mywork/carryout/:formKey0' , component: carryOutPage, name: "carryout"},
+       { path: '/mywork/reform/:formKey0' , component: reformPage, name: "reform"},
        { path: '/mywork/planpunishpage/:formKey0' , component:  planPunishPage, name: "planpunishpage"},
        { path: '/mywork/correctioninstruction/:formKey0' , component:  correctionInstruction, name: "correctioninstruction"},
        { path: '/mywork/administrativepenaltypriornotice/:formKey0' , component:  administrativePenaltyPriorNotice, name: "administrativepenaltyprionotice"},
@@ -101,6 +108,7 @@ var router = new VueRouter({
        { path: '/mywork/punishpage/:formKey0' , component:  punishPage, name: "punishpage"},
        { path: '/mywork/filesendpage/:formKey0' , component:  fileSendPage, name: "filesendpage"},
        { path: '/mywork/trialtransferpage/:formKey0' , component:  trialTransferPage, name: "trialtransferpage"},
+       { path: '/mywork/trialtransferpolicepage/:formKey0' , component:  trialTransferPolicePage, name: "trialtransferpolicepage"},
        { path: '/mywork/caseendpage/:formKey0' , component:  caseEndPage, name: "caseendpage"},
        { path: '/mywork/casehandle' , component:  caseHandle, name: "casehandle"},
       //  { path: '/mywork/rectificationbackpage' , component:  rectificationBackPage, name: "rectificationbackpage"},                                                                                                                                                                                                           

@@ -2,56 +2,93 @@
     <div class="home-container">
         <header id="header" class="mui-bar mui-bar-nav">
             <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="back-btn">返回</span></a>
-            <a class="mui-title">限期改正指令书</a>
+            <a class="mui-title">移送审批表</a>
             <!-- <mt-button type="primary" class="mui-pull-right" @click="addCase">添加</mt-button> -->
             <a class="mui-pull-right mui-icon mui-icon-right-nav" @click="handle('yes')" v-show="(formKey0 == formname)">保存</a>
         </header>
         <div class="card-container">
+            <!-- <div class="form-label">
+                <h4 class="form-title">涉嫌罪名</h4>
+            </div> -->
             <form class="mui-input-group">
                 <div class="mui-input-row">
-                    <label>被指令单位或个人：</label>
-                    <input type="text" placeholder="输入被指令单位或个人：" v-model="docVarList.ldbzjcxqgzzls_beizhilingdanweihuogeren">
-                </div>
-                <div class="mui-input-row" style="margin: 2px 0">
-                    <textarea id="textarea" rows="5" placeholder="输入认定的事实" v-model="docVarList.ldbzjcxqgzzls_rendingdeshishi"></textarea>
-                </div>
-            </form>
-            <form class="mui-input-group">
-                <!-- <label style="width:35%;padding: 5px 15px;">产业类别：</label> -->
-                <div class="mui-input-row">
-                    <label>立案依据：</label>
-                    <input type="text" placeholder="输入立案依据" v-model="docVarList.ldbzjcxqgzzls_lianyiju">
+                    <label>涉案罪名：</label>
+                    <input type="text" placeholder="输入涉案罪名" v-model="docVarList.ldbzsxfzajysspb_shexianzuiming">
                 </div>
                 <div class="mui-input-row">
-                    <label>指令依据：</label>
-                    <input type="text" placeholder="输入指令依据" v-model="docVarList.ldbzjcxqgzzls_zhilingyiju">
+                    <label>被监察单位或个人：</label>
+                    <input type="text" placeholder="输入被监察单位或个人" v-model="docVarList.ldbzsxfzajysspb_beijianchadanwei">
+                </div>
+                <div class="mui-input-row">
+                    <label>地址：</label>
+                    <input type="text" placeholder="输入地址" v-model="docVarList.ldbzsxfzajysspb_fadingdaibiaorenhuofuzeren">
+                </div>
+                <div class="mui-input-row">
+                    <label>法定代表人或负责人：</label>
+                    <input type="text" placeholder="输入法定代表人或负责人" v-model="docVarList.ldbzsxfzajysspb_dizhi">
+                </div>
+                <div class="mui-input-row">
+                    <label>联系电话：</label>
+                    <input type="text" placeholder="输入联系电话" v-model="docVarList.ldbzsxfzajysspb_lianxidianhua">
                 </div>
             </form>
             <form class="mui-textarea">
                 <!-- <label style="width:35%;padding: 5px 15px;">产业类别：</label> -->
                 <div class="mui-input-row" style="margin: 2px 0">
-                    <textarea id="textarea" rows="5" placeholder="输入改正的内容和期限" v-model="docVarList.ldbzjcxqgzzls_gaizhengdeneirongheqixian"></textarea>
+                    <textarea id="textarea" rows="5" placeholder="输入基本违法事实及移送理由" v-model="docVarList.ldbzsxfzajysspb_jibenweifashishijiyisongliyou"></textarea>
                 </div>
             </form>
             <form class="mui-input-group">
-                <!-- <label style="width:35%;padding: 5px 15px;">产业类别：</label> -->
-                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('Date1',$event)">
-                    <label data-options='{"type":"date"}'>截止日期：</label>
-                    <input type="text" id="Date1" data-options='{"type":"date"}' readonly="readonly" v-model="docVarList.ldbzjcxqgzzls_jiezhiriqi">
+                <div class="mui-input-row" style="margin: 2px 0">
+                    <textarea id="textarea" rows="5" placeholder="输入承办检察员意见" v-model="docVarList.ldbzsxfzajysspb_chengbanjianchuayuanyijian"></textarea>
                 </div>
                 <div class="mui-input-row">
-                    <label>逾期处罚依据：</label>
-                    <input type="text" placeholder="输入逾期处罚依据" v-model="docVarList.ldbzjcxqgzzls_yuqichufayiju">
+                    <label>主办监察员：</label>
+                    <input type="text" placeholder="输入主办监察员姓名" v-model="docVarList.ldbzsxfzajysspb_zhubanjianchayuan">
+                </div>
+                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('Date1',$event)">
+                    <label data-options='{"type":"date"}'>日期：</label>
+                    <input type="text" id="Date1" data-options='{"type":"date"}' readonly="readonly" v-model="docVarList.ldbzsxfzajysspb_zhubanjianchayuanriqi">
+                </div>
+                <div class="mui-input-row">
+                    <label>协办监察员：</label>
+                    <input type="text" placeholder="输入协办监察员姓名" v-model="docVarList.ldbzsxfzajysspb_xiebanjianchayuan">
+                </div>
+                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('Date2',$event)">
+                    <label data-options='{"type":"date"}'>日期：</label>
+                    <input type="text" id="Date2" data-options='{"type":"date"}' readonly="readonly" v-model="docVarList.ldbzsxfzajysspb_xiebanjianchayuanriqi">
                 </div>
             </form>
-            <form  class="mui-input-group">
+            <form class="mui-input-group">
+                <div class="mui-input-row" style="margin: 2px 0">
+                    <textarea id="textarea" rows="5" placeholder="输入监察机构负责人意见" v-model="docVarList.ldbzsxfzajysspb_shenheyijian"></textarea>
+                </div>
                 <div class="mui-input-row">
-                    <label>后续处理：</label>
-                    <select name="caseSource" id="caseSource" class="mui-select fluid" v-model="docVarList.RESULT">
-                        <option value="行政处罚事先告知" selected>行政处罚事先告知</option>
-                        <option value="主动整改">主动整改</option>
-                        <option value="移交公安">移交公安</option>
-                    </select>
+                    <label>审核人：</label>
+                    <input type="text" placeholder="输入审核人姓名" v-model="docVarList.ldbzsxfzajysspb_shenheren">
+                </div>
+                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('Date3',$event)">
+                    <label data-options='{"type":"date"}'>审核日期：</label>
+                    <input type="text" id="Date3" data-options='{"type":"date"}' readonly="readonly" v-model="docVarList.ldbzsxfzajysspb_shenheriqi">
+                </div>
+            </form>
+            <form class="mui-input-group">
+                <div class="mui-input-row" style="margin: 2px 0">
+                    <textarea id="textarea" rows="5" placeholder="输入部门负责人意见" v-model="docVarList.ldbzsxfzajysspb_shenpiyijian"></textarea>
+                </div>
+                <div class="mui-input-row">
+                    <label>审批人：</label>
+                    <input type="text" placeholder="输入审批人姓名" v-model="docVarList.ldbzsxfzajysspb_shenpiren">
+                </div>
+                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('Date4',$event)">
+                    <label data-options='{"type":"date"}'>审批日期：</label>
+                    <input type="text" id="Date4" data-options='{"type":"date"}' readonly="readonly" v-model="docVarList.ldbzsxfzajysspb_shenpiriqi">
+                </div>
+            </form>
+            <form class="mui-textarea">
+                <!-- <label style="width:35%;padding: 5px 15px;">产业类别：</label> -->
+                <div class="mui-input-row" style="margin: 2px 0">
+                    <textarea id="textarea" rows="5" placeholder="输入备注" v-model="docVarList.ldbzsxfzajysspb_beizhu"></textarea>
                 </div>
             </form>
             <div class="form-label">
@@ -71,29 +108,37 @@
 </template>
 <script>
 import httpurl from '../../js/config';
-import {Toast} from 'mint-ui';
+
 export default {
     data() {
         return {
             docVarList: {},
-            formname: "5",
+            formname: "11",
             formKey0: this.$route.params.formKey0,
             PROC_INST_ID_: this.$route.query.PROC_INST_ID_,		//流程实例ID
             ID_: this.$route.query.ID_,				//任务ID
             OPINION: this.$route.query.OPINION,			//审批意见
             ASSIGNEE_: this.$route.query.ASSIGNEE_,			//待办人
             vars: [
-                "ldbzjcxqgzzls_beizhilingdanweihuogeren",
-                "ldbzjcxqgzzls_rendingdeshishi",
-                "ldbzjcxqgzzls_lianyiju",
-                "ldbzjcxqgzzls_zhilingyiju",
-                "ldbzjcxqgzzls_gaizhengdeneirongheqixian",
-                "ldbzjcxqgzzls_jiezhiriqi",
-                "ldbzjcxqgzzls_yuqichufayiju",
-                "RESULT",
+                "ldbzsxfzajysspb_shexianzuiming",
+                "ldbzsxfzajysspb_beijianchadanwei",
+                "ldbzsxfzajysspb_fadingdaibiaorenhuofuzeren",
+                "ldbzsxfzajysspb_dizhi",
+                "ldbzsxfzajysspb_lianxidianhua",
+                "ldbzsxfzajysspb_jibenweifashishijiyisongliyou",
+                "ldbzsxfzajysspb_chengbanjianchuayuanyijian",
+                "ldbzsxfzajysspb_zhubanjianchayuan",
+                "ldbzsxfzajysspb_zhubanjianchayuanriqi",
+                "ldbzsxfzajysspb_shenheyijian",
+                "ldbzsxfzajysspb_shenheren",
+                "ldbzsxfzajysspb_shenheriqi",
+                "ldbzsxfzajysspb_shenpiyijian",
+                "ldbzsxfzajysspb_shenpiren",
+                "ldbzsxfzajysspb_shenpiren",
+                "ldbzsxfzajysspb_beizhu"
             ],
             CASE_ID_: "",
-            TASK_ID_: "责令整改",
+            TASK_ID_: "移交公安",
             fileList: [],
             httpurl: httpurl
         }
@@ -135,7 +180,6 @@ export default {
 			// });
 			//zty
 			var self = this;
-			//var FormResult;
 			if (!this.CONNULL || this.CONNULL) {
 				$.ajax({
 					xhrFields: {
@@ -147,13 +191,14 @@ export default {
 					dataType: 'json',
 					success: function (data) {
 						if ("success" == data.result) {
+							console.log(taskVariables);
                             vm.$router.go(-2);
 						} else if ("exception" == data.result) {
-							Toast("提交审批", data.exception);//显示异常
+							showException("提交审批", data.exception);//显示异常
 						}
 					}
 				}).done().fail(function () {
-					Toast("登录失效!", "请求服务器无响应，稍后再试", "warning");
+					swal("登录失效!", "请求服务器无响应，稍后再试", "warning");
 				});
 			}
 		},
@@ -414,20 +459,20 @@ export default {
             padding-left: 0;
             border: 0;
         }
-    }
-    .form-label{
-        background-color: white; 
-        padding: 7px;
-        padding-left: 15px;
-        .form-title:before{
-            /* margin: 10px; */
-            content: "";
-            width: 8px;
-            display: inline-block;
-            height: 25px;
-            background-color: #2e8000c2;
-            margin-right: 10px;
-            vertical-align: middle;
+        .form-label{
+            background-color: white; 
+            padding: 7px;
+            padding-left: 15px;
+            .form-title:before{
+                /* margin: 10px; */
+                content: "";
+                width: 8px;
+                display: inline-block;
+                height: 25px;
+                background-color: #2e8000c2;
+                margin-right: 10px;
+                vertical-align: middle;
+            }
         }
     }
 }

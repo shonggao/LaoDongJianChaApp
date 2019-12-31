@@ -11,39 +11,51 @@
             <div class="form-label">
                 <h4 class="form-title">案件文书</h4>
             </div>
-            <mt-cell title="投诉登记表" is-link
+            <mt-cell title="投诉登记" is-link
                 :to="'/mywork/complaintregistration/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
                 <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
             </mt-cell>
-            <mt-cell title="立案审批表" is-link
+            <mt-cell title="立案审批" is-link
                 :to="'/mywork/caseregisterpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
                 <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
             </mt-cell>
-            <mt-cell slot="icon" title="调查询问通知书" is-link
+            <mt-cell title="案件分派" is-link
+                :to="'/mywork/casedeliver/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
+                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+            </mt-cell>
+            <mt-cell title="调查取证" is-link
                 :to="'/mywork/filesendpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
                 <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
             </mt-cell>
-            <mt-cell title="限期改正指令书" is-link
+            <mt-cell title="责令整改" is-link
                 :to="'/mywork/correctioninstruction/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
                 <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
             </mt-cell>
-            <mt-cell title="行政处理决定书" is-link
-                :to="'/mywork/punishpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
-                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
-            </mt-cell>
-            <mt-cell title="行政处罚决定书" is-link
-                :to="'/mywork/planpunishpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
-                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
-            </mt-cell>
-            <mt-cell title="移送审批表" is-link
-                :to="'/mywork/trialtransferpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
-                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
-            </mt-cell>
-            <mt-cell title="行政处罚事先告知书" is-link
+            <mt-cell title="行政处理(处罚)事先告知" is-link
                 :to="'/mywork/administrativepenaltypriornotice/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
                 <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
             </mt-cell>
-            <mt-cell title="结案审批表" is-link
+            <mt-cell title="行政处理(处罚）" is-link
+                :to="'/mywork/punishpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
+                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+            </mt-cell>
+            <mt-cell title="主动履行" is-link
+                :to="'/mywork/carryout/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
+                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+            </mt-cell>
+            <mt-cell title="移交法院" is-link
+                :to="'/mywork/trialtransferpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
+                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+            </mt-cell>
+            <mt-cell title="主动整改" is-link
+                :to="'/mywork/reform/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
+                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+            </mt-cell>
+            <mt-cell title="移交公安" is-link
+                :to="'/mywork/trialtransferpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
+                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+            </mt-cell>
+            <mt-cell title="案件结案" is-link
                 :to="'/mywork/caseendpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
                 <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
             </mt-cell>
@@ -109,10 +121,24 @@
                 docHTML: "",
                 cacheTimmer: null,
                 docVarList: {},
-                CASE_ID_: "",
-                TASK_ID_: "",
+                CASE_ID_: this.$route.query.CASE_ID_,
+                TASK_ID_: this.$route.query.TASK_ID_,
                 fileList: [],
-                httpurl: httpurl
+                httpurl: httpurl,
+                taskKeyMap: {
+                    "投诉登记": 1,
+                    "立案审批": 2,
+                    "案件分派": 3,
+                    "调查取证": 4,
+                    "责令整改": 5,
+                    "行政处理(处罚)事先告知": 6,
+                    "行政处理(处罚)": 7,
+                    "主动履行": 8,
+                    "移交法院": 9,
+                    "主动整改": 10,
+                    "移交公安": 11,
+                    "案件结案": 12
+                },
             }
         },
         computed: {
@@ -141,14 +167,12 @@
                 this.PROC_INST_ID_ = this.getUrlKey('PROC_INST_ID_');	//链接参数
                 this.ID_ = this.getUrlKey('ID_');						//链接参数
                 this.FILENAME = this.getUrlKey('FILENAME');				//链接参数
-                this.CASE_ID_ = this.getUrlKey('CASE_ID_');				//链接参数
-                this.TASK_ID_ = this.getUrlKey('TASK_ID_');				//链接参数
+                this.formKey0 = this.taskKeyMap[this.TASK_ID_];
                 if (this.flag == '1') {
                     this.getData();
                 }
                 else {
                     this.getData2();
-                    console.log(2);
                 }
                 this.getFileList();
             },
@@ -171,7 +195,6 @@
                             vm.varList = data.varList;
                             vm.imgSrc = data.imgSrc;
                             vm.loading = false;
-                            vm.formKey0 = vm.formKeyList[data.formKey];
                             vm.formKey = data.formKey;
                             for (const item of vm.hitaskList) {
                                 vm.docVarList[item.NAME_] = item.TEXT_
