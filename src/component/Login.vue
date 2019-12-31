@@ -1,17 +1,24 @@
 <template>
     <div class="login-container">
-        <header class="mui-bar mui-bar-nav">
+        <!-- <header class="mui-bar mui-bar-nav">
                 <h1 class="mui-title">武昌区劳动监察</h1>
-        </header>
+        </header> -->
+        <div class="logo-container">
+            <img src="../image/icon.png" class="logoimg-container">
+            <div class="systeminfo-container">
+                <p><span class="address">武汉市武昌区</span></p>
+                <p style="margin-top: 5px;"><span class="systemname">人力资源局劳动监察系统</span></p>
+            </div>
+        </div>
         <div class="mui-content">
             <form class="mui-input-group" name="login">
                 <div class="mui-input-row">
                     <label>帐号</label>
                     <input type="text" class="mui-input-clear" placeholder="请输入帐号名" v-model="username">
                 </div>
-                <div class="mui-input-row">
+                <div class="mui-input-row mui-password">
                     <label>密码</label>
-                    <input type="password" class="mui-input-clear" placeholder="请输入密码" v-model="password">
+                    <input type="password" class="mui-input-password" placeholder="请输入密码" v-model="password">
                 </div>
             </form>
             <!-- 注意：登录按钮不能和账号密码输入框放在一个form里面 -->
@@ -20,7 +27,9 @@
                 <!-- <button type="button" class="mui-btn mui-btn-blue" id="login" @click="login">登录</button> -->
                 <!-- <button type="button" class="mui-btn mui-btn-green" id="reg">注册</button> -->
             </div>
+           
         </div>
+        <img class="loginimg-container" src="../image/loginbackground.png"></img>
     </div>
     
 </template>
@@ -58,7 +67,7 @@ export default{
                 KEYDATA : "qq313596790fh" + this.username + ",fh," + this.password,
             }    
             this.$http.post('admin/check',str,{withCredentials: true}).then( result => {
-                console.log(result);
+                // console.log(result);
                 if( result.body.result == "success"){
                     var user = {
                         username: this.username,
@@ -66,23 +75,29 @@ export default{
                     };
                     localStorage.setItem("userinfo", JSON.stringify(user));
                     sessionStorage.setItem("logged", true);
-                   // this.$router.replace("/home");
-                    window.location.href = "./F2/views/index.html";
+                    if (window.history.length == 1){
+                        console.log('/home')
+                        this.$router.replace("/home");
+                    }
+                    else{
+                        console.log("history");
+                        this.$router.go(0-window.history.length+1); 
+                    }
                 }
                 else{
-                    Toast("密码错误");
+                    Toast("用户名或密码错误");
                     this.password = "";
                     return;
                 }
             }, error => {
-                console.log(error);
+                Toast("服务器连接失败");
+                // this.$router.replace("/home");
             })
         },
         getHistoryInfo(){
             console.log("getHistoryInfo");
             if(localStorage.getItem("userinfo")){     
                 var user = JSON.parse(localStorage.getItem("userinfo"));
-                console.log(user);
                 this.username = user.username;
                 this.password = user.password;
             }
@@ -92,6 +107,13 @@ export default{
         this.$emit("pageChanged");
         this.getHistoryInfo();
     },
+    beforeRouteLeave (to, from , next) {
+        if ((from.path == '/' || from.path == '/login') && to.path == "/home") {
+            next()
+        } else {
+            next(false)
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>
@@ -101,15 +123,46 @@ export default{
     overflow: auto;
     background-color: #fff;
     .mui-content{
-        position: absolute;
-        top: 50%;
+        position: fixed;
+        top: 38%;
         left: 50%;
         transform: translate(-50%,-50%);
         width: 90%;     
         background-color: white; 
         padding: 0;
-        box-shadow: 0 0 8px #999;
+        box-shadow: 0 0 3px #999;
         border-radius: 5px;
+    }
+    .logo-container{
+        position: absolute;
+        top: 9%;
+        width: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 15%;
+        display: flex;
+        justify-content: center;
+        .logoimg-container{
+            /* position: absolute; */
+            width: 90px;
+            height: 90px;
+        }
+        .systeminfo-container{
+            margin: 18px 0 0 0;
+
+            p{
+                margin: 0;
+                color: black;
+            }
+            .address{
+                font-size: 24px;          
+                font-weight: 1000;
+            }
+            .systemname{
+                font-size: 17px;              
+                font-weight: 700;
+            }
+        }
     }
 } 
 .mui-input-group {
@@ -131,5 +184,11 @@ export default{
 }
 .mui-input-row input{
     float: left;
+}
+.loginimg-container{
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    height: 35%;
 }
 </style>

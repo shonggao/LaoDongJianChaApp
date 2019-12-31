@@ -1,6 +1,6 @@
  
  //服务器host
- var httpurl = 'http://127.0.0.1:8081/';
+ var httpurl = 'http://172.16.10.84:8081/';
  //var httpurl = 'http://192.168.137.1:8081/';
  
  //显示异常

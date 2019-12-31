@@ -8,7 +8,7 @@
     "start": "webpack",
     "dev": "webpack-dev-server --port 3000 --open",
     "build": "webpack-dev-server --hide-modules",
-    "localSvr": "serve --port 8080",
+    "localSvr": "serve --port 3000",
     "watch": "webpack --watch"
   },
   "author": "",
@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "mint-ui": "^2.2.13",
+    "mockjs": "^1.0.1-beta3",
     "moment": "^2.24.0",
     "vue": "^2.6.10",
     "vue-preview": "^1.1.3",

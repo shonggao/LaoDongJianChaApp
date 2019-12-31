@@ -13,11 +13,16 @@ import personalContainer from './component/tabbar/PersonalContainer.vue';
 import companyInfo from './component/companymanager/CompanyInfo.vue';
 import addCompanyInfo from './component/companymanager/AddCompanyInfo.vue';
 import companyInfoList from './component/companymanager/CompanyInfoList.vue';
+import editCompanyInfo from './component/companymanager/EditCompanyInfo.vue';
 
 //导入inspectioncompany组件
 import inspectionCompanyList from './component/companymanager/InspectionCompanyList.vue';
-import inspectionCompanyInfo from './component/companymanager/InspectionCompanyInfo.vue';
 import addInspectionCompany from './component/companymanager/AddInspectionCompany.vue';
+import editInspectionCompany from './component/companymanager/EditInspectionCompany.vue';
+
+import inspectionCompanyInfoList from './component/companymanager/InspectionCompanyInfoList.vue';
+import addInspectionCompanyInfo from './component/companymanager/AddInspectionCompanyInfo.vue';
+import inspectionCompanyInfo from './component/companymanager/InspectionCompanyInfo.vue';
 
 //导入personal组件
 import workRecord from './component/personal/WorkRecord.vue';
@@ -25,9 +30,25 @@ import evidence from './component/personal/Evidence.vue';
 import download from './component/personal/Download.vue';
 
 //导入mywork组件
-import caseHandle from './component/mywork/CaseHandle1.vue';
-import caseHandle2 from './component/mywork/CaseHandle2.vue';
 import addCase from './component/mywork/AddCase.vue';
+// import recordPage from './component/mywork/RecordPage.vue';
+import caseHandle from './component/mywork/CaseHandle.vue';
+
+import complaintRegistration from './component/mywork/ComplaintRegistration.vue';  //投诉登记表
+import caseRegisterPage from './component/mywork/CaseRegisterPage.vue';  //立案审批表
+import trialTransferPage from './component/mywork/TrialTransferPage.vue';  //移送审批表
+import fileSendPage from './component/mywork/FileSendPage.vue';  //调查询问通知书
+import caseEndPage from './component/mywork/CaseEndPage.vue';  //结案审批表
+import planPunishPage from './component/mywork/PlanPunishPage.vue';  //行政处罚决定书
+import punishPage from './component/mywork/PunishPage.vue';  //行政处理决定书
+import correctionInstruction from './component/mywork/CorrectionInstruction.vue'; //限期改正指令书
+import administrativePenaltyPriorNotice from './component/mywork/administrativePenaltyPriorNotice.vue';
+
+
+// import caseEndPage from './'
+
+// import caseFilePage from './component/mywork/CaseFilePage.vue';
+// import rectificationBackPage from './component/mywork/RectificationBackPage.vue';
 
 //创建路由对象
 var router = new VueRouter({
@@ -41,24 +62,50 @@ var router = new VueRouter({
        { path: '/companymanager' , component: companymanagerContainer},     
        { path: '/personal' , component: personalContainer},     
 
-       { path: '/companymanager/addcompanyinfo' , component: addCompanyInfo , name: "addcompanyinfo"},                                                           
-       { path: '/companymanager/companyinfo/:id' , component: companyInfo , name: "companyinfo"},                                              
-       { path: '/companymanager/companyinfolsit' , component: companyInfoList , name: "companyinfolist"},
+    //    { path: '/companymanager/addcompanyinfo' , component: addCompanyInfo , name: "addcompanyinfo"},
+       { path: '/companymanager/companyinfo/add' , component: addCompanyInfo , name: "addcompanyinfo"},                                                           
+    //    { path: '/companymanager/companyinfo/:id' , component: companyInfo , name: "companyinfo"},  
+       { path: '/companymanager/companyinfo/:id' , component: companyInfo , name: "companyinfo"},  
+    //    { path: '/companymanager/companyinfolist' , component: companyInfoList , name: "companyinfolist"},
+       { path: '/companymanager/companyinfolist' , component: companyInfoList , name: "companyinfolist"},
+    //    { path: '/companymanager/editcompanyinfo/:id', component: editCompanyInfo, name: "editcompanyinfo"}, 
+       { path: '/companymanager/companyinfo/edit/:id', component: editCompanyInfo, name: "editcompanyinfo"},                  
+
           
+    //    { path: '/companymanager/inspectioncompanylist', component: inspectionCompanyList, name:"inspectioncompanylist"}, 
        { path: '/companymanager/inspectioncompanylist', component: inspectionCompanyList, name:"inspectioncompanylist"},
-       { path: '/companymanager/inspectioncompanyinfo/:id', component: inspectionCompanyInfo, name: "inspectioncompanyinfo"},  
-       { path: '/companymanager/addinspectioncompany', component: addInspectionCompany, name: "addinspectioncompany"},                   
+    //    { path: '/companymanager/addinspectioncompany', component: addInspectionCompany, name: "addinspectioncompany"},
+       { path: '/companymanager/inspectioncompany/add', component: addInspectionCompany, name: "addinspectioncompany"},
+    //    { path: '/companymanager/editinspectioncompany/:id', component: editInspectionCompany, name: "editinspectioncompany"},
+       { path: '/companymanager/inspectioncompany/edit/:id', component: editInspectionCompany, name: "editinspectioncompany"}, 
+
+
+    //    { path: '/companymanager/inspectioncompanyinfolist/:id', component: inspectionCompanyInfoList, name: "inspectioncompanyinfolist"},
+       { path: '/companymanager/inspectioncompanyinfolist/:id', component: inspectionCompanyInfoList, name: "inspectioncompanyinfolist"},
+       { path: '/companymanager/inspectioncompanyinfo/add/:id', component: addInspectionCompanyInfo, name: "addinspectioncompanyinfo"}, 
+       { path: '/companymanager/inspectioncompanyinfo/edit/:id', component: inspectionCompanyInfo, name: "inspectioncompanyinfo"}, 
+
        
        { path: '/personal/workrecord' , component: workRecord , name: "workrecord"},
        { path: '/personal/evidence' , component: evidence , name: "evidence"},                                              
        { path: '/personal/download' , component: download , name: "download"},                                                                                                   
                                                  
-       { path: '/mywork/addcase' , component:  addCase, name: "addcase"}, 
-       { path: '/mywork/casehandle/1/:id' , component:  caseHandle, name: "casehandle"},
-       { path: '/mywork/casehandle/2/:id' , component:  caseHandle2, name: "casehandle2"},                                                                                                                                                                                                                    
+       { path: '/mywork/addcase' , component:  addCase, name: "addcase"},
+      //  { path: '/mywork/recordpage' , component:  recordPage, name: "recordpage"},
+       { path: '/mywork/complaintregistration/:formKey0' , component: complaintRegistration, name: "complaintregistration"},
+       { path: '/mywork/caseregisterpage/:formKey0' , component: caseRegisterPage, name: "caseregisterpage"},
+       { path: '/mywork/planpunishpage/:formKey0' , component:  planPunishPage, name: "planpunishpage"},
+       { path: '/mywork/correctioninstruction/:formKey0' , component:  correctionInstruction, name: "correctioninstruction"},
+       { path: '/mywork/administrativepenaltypriornotice/:formKey0' , component:  administrativePenaltyPriorNotice, name: "administrativepenaltyprionotice"},
+      //  { path: '/mywork/casefilepage' , component:  caseFilePage, name: "casefilepage"},
+       { path: '/mywork/punishpage/:formKey0' , component:  punishPage, name: "punishpage"},
+       { path: '/mywork/filesendpage/:formKey0' , component:  fileSendPage, name: "filesendpage"},
+       { path: '/mywork/trialtransferpage/:formKey0' , component:  trialTransferPage, name: "trialtransferpage"},
+       { path: '/mywork/caseendpage/:formKey0' , component:  caseEndPage, name: "caseendpage"},
+       { path: '/mywork/casehandle' , component:  caseHandle, name: "casehandle"},
+      //  { path: '/mywork/rectificationbackpage' , component:  rectificationBackPage, name: "rectificationbackpage"},                                                                                                                                                                                                           
                                                                                                                                                                                                                            
     ],
     linkActiveClass: 'mui-active' //覆盖默认的路由高亮的类，默认的类叫做 router-link-active
 })
-
 export default router

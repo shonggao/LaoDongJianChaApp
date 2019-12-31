@@ -7,75 +7,173 @@
             <mt-button type="primary" size="small" slot="right" @click="addCompanyInfo">添加</mt-button>
         </mt-header> -->
         <header id="header" class="mui-bar mui-bar-nav">
-            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" @click="goBack()"><span class="back-btn">返回</span></a>
-            <a class="mui-title">企业管理</a>
-            <mt-button type="primary" class="mui-pull-right" @click="addCompanyInfo">添加</mt-button>
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="back-btn">返回</span></a>
+            <a class="mui-title">企业信息</a>
+            <!-- <mt-button type="primary" class="mui-pull-right" @click="<a class="mui-pull-right mui-icon mui-icon-right-nav" @click="addInspectionCompany">添加</a>">添加</mt-button> -->
+            <a class="mui-pull-right mui-icon mui-icon-right-nav" @click="addInspectionCompany">添加</a>
         </header>
         <div class="card-container">
-            <mt-field label="单位名称：" placeholder="输入单位名称" v-model="enterpriseName"></mt-field>
-            <mt-field label="统一社会信用代码：" placeholder="输入统一社会信用代码" v-model="socialCreditCode"></mt-field>
-            <mt-field label="单位地址：" placeholder="输入单位地址" v-model="enterpriseAddress"></mt-field>
-            <mt-field label="组织机构代码：" placeholder="输入组织机构代码" v-model="organizationCode"></mt-field>
-            <mt-field label="经营方式：" placeholder="输入经营方式" v-model="managementStyle"></mt-field>
-            <mt-field label="电子邮箱：" placeholder="输入电子邮箱" v-model="email"></mt-field>
-            <mt-field label="单位网址：" placeholder="输入单位网址" v-model="website"></mt-field>
-            <mt-field label="产业类别：" placeholder="输入产业类别" v-model="industrialCategory"></mt-field>
-            <mt-field label="传真：" placeholder="输入传真" v-model="fax"></mt-field>
-            <mt-field label="单位成立日期：" placeholder="输入单位成立日期" v-model="establishDate"></mt-field>
-            <mt-field label="单位简称：" placeholder="输入单位简称" v-model="simpleName"></mt-field>
-            <mt-field label="单位类型：" placeholder="输入单位类型" v-model="enterpriseType"></mt-field>
-            <mt-field label="经济类型：" placeholder="输入经济类型" v-model="economicType"></mt-field>
-            <mt-field label="行业类型：" placeholder="输入行业类型" v-model="industryType"></mt-field>
-            <mt-field label="（注册资金）币种：" placeholder="输入（注册资金）币种" v-model="moneyType"></mt-field>
-            <mt-field label="注册资金（万元）：" placeholder="输入注册资金（万元）" v-model="regisMoney"></mt-field>
-            <mt-field label="隶属监管关系：" placeholder="输入隶属监管关系" v-model="subordinateRelation"></mt-field>
-            <mt-field label="主管部门/主要投资人/控股单位：" placeholder="输入主管部门/主要投资人/控股单位" v-model="majorCharge"></mt-field>
-            <mt-field label="主营范围：" placeholder="输入主营范围" v-model="mainBusiness"></mt-field>
-            <mt-field label="兼营范围：" placeholder="输入兼营范围" v-model="partBusiness"></mt-field>
-            <mt-field label="工商营业执照号码：" placeholder="输入工商营业执照号码" v-model="businessNumber"></mt-field>
-            <mt-field label="法定代表人：" placeholder="输入法定代表人" v-model="legalRepresentative"></mt-field>
-            <mt-field label="法定代表人联系电话：" placeholder="输入法定代表人联系电话" v-model="repreTelephone"></mt-field>
-            <mt-field label="法定代表人公民身份证号码：" placeholder="输入法定代表人公民身份证号码" v-model="repreID"></mt-field>
-            <mt-field label="单位负责人姓名：" placeholder="输入单位负责人姓名" v-model="enterpriseChargeName"></mt-field>
-            <mt-field label="单位负责人电话：" placeholder="输入单位负责人电话" v-model="enterpriseChargeTelephone"></mt-field>
-            <mt-field label="劳资负责人姓名：" placeholder="输入劳资负责人姓名" v-model="moneyChargeName"></mt-field>
-            <mt-field label="劳资负责人联系电话：" placeholder="输入劳资负责人联系电话" v-model="moneyChargeTelephone"></mt-field>
-            <mt-field label="联系人：" placeholder="输入联系人" v-model="linkPerson"></mt-field>
-            <mt-field label="联系人电话：" placeholder="输入联系人电话" v-model="linkPersonTelephone"></mt-field>
-            <mt-field label="工商登记发照日期：" placeholder="输入工商登记发照日期" v-model="handoutDate"></mt-field>
-            <mt-field label="工商登记有效期限：" placeholder="输入工商登记有效期限" v-model="effectiveDate"></mt-field>
-            <mt-field label="单位开户行：" placeholder="输入单位开户行" v-model="enterpriseAccountOpenBank"></mt-field>
-            <mt-field label="开户行：" placeholder="输入开户行" v-model="accountOpenBank"></mt-field>
-            <mt-field label="银行账户：" placeholder="输入银行账户" v-model="bankAccount"></mt-field> 
-            
-            <mt-field label="从业人员总数：" placeholder="输入从业人员总数" v-model="numberOfEnployees"></mt-field>            
-            <mt-field label="兼职人员数：" placeholder="输入兼职人员数" v-model="numberOfParttimeWorkers"></mt-field>            
-            <mt-field label="全日制用工人数：" placeholder="输入全日制用工人数" v-model="numberOfFulltimemployment"></mt-field>            
-            <mt-field label="非全日制用工人数：" placeholder="输入非全日制用工人数" v-model="numberOfParttimeLabor"></mt-field>            
-            <mt-field label="少数民族人员数：" placeholder="输入少数民族人员数" v-model="personnelNumberOfEthnicMinorities"></mt-field>            
-            <mt-field label="童工人数：" placeholder="输入童工人数" v-model="numberOfChildlabor"></mt-field>            
-            <mt-field label="聘用退休人数：" placeholder="输入聘用退休人数" v-model="hiteRetiredPeople"></mt-field>            
-            <mt-field label="聘用内退人数：" placeholder="输入聘用内退人数" v-model="employmentNumberIsRetreatedInside"></mt-field>            
-            <mt-field label="已办理录用备案就业人数：" placeholder="输入已办理录用备案就业人数" v-model="numberOfEmploymentAlreadyDealtWith"></mt-field>            
-            <mt-field label="残疾职工人数：" placeholder="输入残疾职工人数" v-model="disabledWorkersNumber"></mt-field>            
-            <mt-field label="外国籍从业人数：" placeholder="输入外国籍从业人数" v-model="foreignWorkers"></mt-field>            
-            <mt-field label="解除劳动用工关系人数：" placeholder="输入解除劳动用工关系人数" v-model="terminateThrLaborEmploymentRelationship"></mt-field>            
-            <mt-field label="劳务派遣使用人数：" placeholder="输入劳务派遣使用人数" v-model="laborDispatchUsingNumbers"></mt-field>            
-            <mt-field label="女职工人数：" placeholder="输入女职工人数" v-model="numberOffemaleWorker"></mt-field>            
-            <mt-field label="未成年工人数：" placeholder="输入未成年工人数" v-model="numberOfJuvenileWorkers"></mt-field>            
-            <mt-field label="农民工个数：" placeholder="输入农民工个数" v-model="numberOfMigrantWorkers"></mt-field>            
-            <mt-field label="单位借用人员人数：" placeholder="输入单位借用人员人数" v-model="unitToBorrowStaffNumbers"></mt-field>            
-            <mt-field label="实习见习人员/勤工助学人员：" placeholder="输入实习见习人员/勤工助学人员" v-model="internshipTraineePersonnel"></mt-field>            
-            <mt-field label="和上年职工相比有无增减：" placeholder="输入和上年职工相比有无增减" v-model="comparedToLastYearWorkerHas"></mt-field>            
-            <mt-field label="增减原因：" placeholder="输入增减原因" v-model="increaseOrDecreaseTheReason"></mt-field>            
-            <mt-field label="实际发放工资人数：" placeholder="输入实际发放工资人数" v-model="actualPayrollNumber"></mt-field>            
-            <mt-field label="实际支付工资总额：" placeholder="输入实际支付工资总额" v-model="totalActualPaymentOFWages"></mt-field>            
-            <mt-field label="个人最低月工资：" placeholder="输入个人最低月工资" v-model="individualMinimumWage"></mt-field>            
-            <mt-field label="是否提供工资清单：" placeholder="输入是否提供工资清单" v-model="ifWagesListProvided"></mt-field>            
-            <mt-field label="是否拖欠、克扣工资：" placeholder="输入是否拖欠、克扣工资" v-model="whetherOrWithholdWagesInArrears"></mt-field>            
-            <mt-field label="有无违反最低工资规定：" placeholder="输入有无违反最低工资规定" v-model="inViolantionOftheProvisionsOfTheMinimumWage"></mt-field>            
-            <mt-field label="有无违反高温津贴：" placeholder="输入有无违反高温津贴" v-model="anyViolationOfHighTemperatureAllowance"></mt-field>            
-            
+            <form class="mui-input-group">
+                <div class="mui-input-row">
+                    <label>是否关联<br>单位：</label>
+                    <select name="caseSource" v-model="pd.SFGLDW" class="mui-select fluid">
+                        <option value="是" selected>是</option>
+                        <option value="否">否</option>
+                    </select>
+                </div>
+                <div class="mui-input-row">
+                    <label>单位名称：</label>
+                    <input type="text" placeholder="输入单位名称" v-model="pd.DWMC">
+                </div>
+                <div class="mui-input-row">
+                    <label>统一社会<br>信用代码：</label>
+                    <input type="text" placeholder="输入统一社会信用代码" v-model="pd.TYSHXYDM">
+                </div>
+                <div class="mui-input-row">
+                    <label>单位地址：</label>
+                    <input type="text" placeholder="输入单位地址" v-model="pd.DWDZ">
+                </div>
+                <div class="mui-input-row">
+                    <label>组织机构<br>代码：</label>
+                    <input type="text" placeholder="输入组织机构代码" v-model="pd.ZZJGDM">
+                </div>
+            </form>
+            <form class="mui-input-group">
+                <div class="mui-input-row">
+                    <label>法定代表人：</label>
+                    <input type="text" placeholder="输入法定代表人" v-model="pd.FDDBRXM">
+                </div>
+                <div class="mui-input-row">
+                    <label>法定代表人<br>联系电话：</label>
+                    <input type="text" placeholder="输入法定代表人联系电话" v-model="pd.FDDBRDH">
+                </div>
+                <div class="mui-input-row">
+                    <label>社会保险登记证编码：</label>
+                    <input type="text" placeholder="输入社会保险登记证编码" v-model="pd.SHBXDJZBM">
+                </div>
+            </form>
+            <form class="mui-input-group">
+                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('handoutDate',$event)">
+                    <label data-options='{"type":"date"}'>社会保险登记证发证日期：</label>
+                    <input type="text" id="handoutDate" v-model="pd.SHBX" data-options='{"type":"date"}' readonly="readonly">
+                </div>
+            </form>
+            <form class="mui-input-group">
+                <div class="mui-input-row">
+                    <label>工商营业执照登记机关：</label>
+                    <input type="text" placeholder="输入工商营业执照登记机关"  v-model="pd.GSYYZZDJJG">
+                </div>
+                <div class="mui-input-row">
+                    <label>工商登记执照种类：</label>
+                    <input type="text" placeholder="输入工商登记执照种类"  v-model="pd.GSDJZZZL">
+                </div>
+            </form>
+            <form class="mui-input-group">
+                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('handoutDate',$event)">
+                    <label data-options='{"type":"date"}'>工商登记发照日期：</label>
+                    <input type="text" id="handoutDate" v-model="pd.GSDJFZRQ" data-options='{"type":"date"}' readonly="readonly">
+                </div>
+                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('effectiveDate',$event)">
+                    <label data-options='{"type":"date"}'>工商登记有效期限：</label>
+                    <input type="text" id="effectiveDate" v-model="pd.GSDJYXQX" data-options='{"type":"date"}' readonly="readonly">
+                </div>
+            </form>
+            <form class="mui-input-group">
+                <div class="mui-input-row">
+                    <label>经济类型：</label>
+                    <input type="text" placeholder="输入经济类型"  v-model="pd.JJLX">
+                </div>
+                <div class="mui-input-row">
+                    <label>登录注册<br>类型：</label>
+                    <input type="text" placeholder="输入登录注册类型" v-model="pd.DJZCLX">
+                </div>
+            </form>
+            <form class="mui-input-group">
+                <div class="mui-input-row">
+                    <label>单位负责人<br>姓名：</label>
+                    <input type="text" placeholder="输入单位负责人姓名" v-model="pd.DWFZRXM">
+                </div>
+                <div class="mui-input-row">
+                    <label>单位负责人<br>职务：</label>
+                    <input type="text" placeholder="输入单位负责人职务" v-model="pd.DWFZRZW">
+                </div>
+                <div class="mui-input-row">
+                    <label>单位负责人<br>电话：</label>
+                    <input type="text" placeholder="输入单位负责人电话" v-model="pd.DWFZRLXDH">
+                </div>
+                <div class="mui-input-row">
+                    <label>劳资负责人<br>姓名：</label>
+                    <input type="text" placeholder="输入劳资负责人姓名" v-model="pd.LZFZRXM">
+                </div>
+                <div class="mui-input-row">
+                    <label>劳资负责人<br>联系电话：</label>
+                    <input type="text" placeholder="输入劳资负责人联系电话" v-model="pd.LZFZRLXDH">
+                </div>
+                <div class="mui-input-row">
+                    <label>联系人：</label>
+                    <input type="text" placeholder="输入联系人" v-model="pd.LXR">
+                </div>
+                <div class="mui-input-row">
+                    <label>联系人<br>电话：</label>
+                    <input type="text" placeholder="输入联系人电话" v-model="pd.LXDH">
+                </div>
+            </form>
+            <form class="mui-input-group">
+                <div class="mui-input-row">
+                    <label>诚信等级：</label>
+                    <input type="text" placeholder="输入诚信等级" v-model="pd.CXDJ">
+                </div>
+                <div class="mui-input-row">
+                    <label>单位状态：</label>
+                    <input type="text" placeholder="输入单位状态" v-model="pd.DWZT">
+                </div>
+                <div class="mui-input-row">
+                    <label>所属监察机构名称：</label>
+                    <input type="text" placeholder="输入所属监察机构名称" v-model="pd.SSJCJGMC">
+                </div>
+                <div class="mui-input-row">
+                    <label>所属网格名称：</label>
+                    <input type="text" placeholder="输入所属监察机构名称" v-model="pd.SSWGMC">
+                </div>
+                <div class="mui-input-row">
+                    <label>从业人员总数：</label>
+                    <input type="text" placeholder="输入从业人员总数" v-model="pd.CYRYZS">
+                </div>
+                    <div class="mui-input-row">
+                    <label>全日制用工：</label>
+                    <input type="text" placeholder="输入全日制用工" v-model="pd.QRZYG">
+                </div>
+                <div class="mui-input-row">
+                    <label>全日制用工已签订书面劳动合同人数：</label>
+                    <input type="text" placeholder="输入全日制用工已签订书面劳动合同人数" v-model="pd.QRZYGYQD">
+                </div>    
+            </form>
+            <form class="mui-input-group">
+                <div class="mui-input-row">
+                    <label>无固定期限合同人数：</label>
+                    <input type="text" placeholder="输入无固定期限合同人数" v-model="pd.WGDQXHTRS">
+                </div>
+                <div class="mui-input-row">
+                    <label>固定期限合同人数：</label>
+                    <input type="text" placeholder="输入固定期限合同人数" v-model="pd.GDQXHTRS">
+                </div>
+                <div class="mui-input-row">
+                    <label>最低月工资：</label>
+                    <input type="text" placeholder="输入最低月工资" v-model="pd.ZDYGZ">
+                </div>  
+            </form>
+            <form class="mui-input-group">
+                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('handoutDate',$event)">
+                    <label data-options='{"type":"date"}'>工资支付日期：</label>
+                    <input type="text" id="handoutDate" v-model="pd.GZZFRQ" data-options='{"type":"date"}' readonly="readonly">
+                </div>
+            </form>
+            <form class="mui-input-group">
+                <div class="mui-input-row">
+                    <label>已参加社会保险总人数：</label>
+                    <input type="text" placeholder="输入已参加社会保险总人数" v-model="pd.YCJSHBX">
+                </div>
+            </form>
         </div>
     </div>
 </template>
@@ -85,216 +183,136 @@ import { Toast } from "mint-ui";
 export default{
     data() {
         return {
-            enterpriseName: "",
-            socialCreditCode: "",
-            enterpriseAddress: "",
-            organizationCode: "",
-            managementStyle: "",
-            email: "",
-            website: "",
-            industrialCategory: "",
-            fax: "",
-            establishDate: "",
-            simpleName: "",
-            enterpriseType: "",
-            economicType: "",
-            industryType: "",
-            moneyType: "",
-            regisMoney: "",
-            subordinateRelation: "",
-            majorCharge: "",
-            mainBusiness: "",
-            partBusiness: "",
-            businessNumber: "",
-            legalRepresentative: "",
-            repreTelephone: "",
-            repreID: "",
-            enterpriseChargeName: "",
-            enterpriseChargeTelephone: "",
-            moneyChargeName: "",
-            moneyChargeTelephone: "",
-            linkPerson: "",
-            linkPersonTelephone: "",
-            handoutDate: "",
-            effectiveDate: "",
-            enterpriseAccountOpenBank: "",
-            accountOpenBank: "",
-            bankAccount: "",
-            "numberOfEnployees": "",
-            "numberOfParttimeWorkers": "",
-            "numberOfFulltimemployment": "",
-            "numberOfParttimeLabor": "",
-            "personnelNumberOfEthnicMinorities": "",
-            "numberOfChildlabor": "",
-            "hiteRetiredPeople": "",
-            "employmentNumberIsRetreatedInside": "",
-            "numberOfEmploymentAlreadyDealtWith": "",
-            "disabledWorkersNumber": "",
-            "foreignWorkers": "",
-            "terminateThrLaborEmploymentRelationship": "",
-            "laborDispatchUsingNumbers": "",
-            "numberOffemaleWorker": "",
-            "numberOfJuvenileWorkers": "",
-            "numberOfMigrantWorkers": "",
-            "unitToBorrowStaffNumbers": "",
-            "internshipTraineePersonnel": "",
-            "comparedToLastYearWorkerHas": "",
-            "increaseOrDecreaseTheReason": "",
-            "actualPayrollNumber": "",
-            "totalActualPaymentOFWages": "",
-            "individualMinimumWage": "",
-            "ifWagesListProvided": "",
-            "whetherOrWithholdWagesInArrears": "",
-            "inViolantionOftheProvisionsOfTheMinimumWage": "",
-            "anyViolationOfHighTemperatureAllowance": "",
-
-            name: "企业管理"
+            pd:{},
+            name: "企业管理",
+            QIYEXINXIGUANLI_ID: '',	//主键ID
         }
     },
     created() {
         this.$emit("pageChanged");
     },
     methods: {
-        addCompanyInfo(){
-            if (this.enterpriseName == ""){
+        addInspectionCompany(){
+            if (this.pd.DWMC == "" || this.pd.DWMC == undefined){
                 Toast("单位名称不能未空！！");
             }
             else{
-                var companyInfo = {
-                    enterpriseID: (this.$store.state.companyInfoList[this.$store.state.companyInfoList.length-1]).enterpriseID+1,
-                    enterpriseName: this.enterpriseName,
-                    socialCreditCode: this.socialCreditCode,
-                    enterpriseAddress: this.enterpriseAddress,
-                    organizationCode: this.organizationCode,
-                    managementStyle: this.managementStyle,
-                    email: this.email,
-                    website: this.website,
-                    industrialCategory: this.industrialCategory,
-                    fax: this.fax,
-                    establishDate: this.establishDate,
-                    simpleName: this.simpleName,
-                    enterpriseType: this.enterpriseType,
-                    economicType: this.economicType,
-                    industryType: this.industryType,
-                    moneyType: this.moneyType,
-                    regisMoney: this.regisMoney,
-                    subordinateRelation: this.subordinateRelation,
-                    majorCharge: this.majorCharge,
-                    mainBusiness: this.mainBusiness,
-                    partBusiness: this.partBusiness,
-                    businessNumber: this.businessNumber,
-                    legalRepresentative: this.legalRepresentative,
-                    repreTelephone: this.repreTelephone,
-                    repreID: this.repreID,
-                    enterpriseChargeName: this.enterpriseChargeName,
-                    enterpriseChargeTelephone: this.enterpriseChargeTelephone,
-                    moneyChargeName: this.moneyChargeName,
-                    moneyChargeTelephone: this.moneyChargeTelephone,
-                    linkPerson: this.linkPerson,
-                    linkPersonTelephone: this.linkPersonTelephone,
-                    handoutDate: this.handoutDate,
-                    effectiveDate: this.effectiveDate,
-                    enterpriseAccountOpenBank: this.enterpriseAccountOpenBank,
-                    accountOpenBank: this.accountOpenBank,
-                    bankAccount: this.bankAccount,
-                    "numberOfEnployees": this.numberOfEnployees,
-                    "numberOfParttimeWorkers": this.numberOfParttimeWorkers,
-                    "numberOfFulltimemployment": this.numberOfFulltimemployment,
-                    "numberOfParttimeLabor": this.numberOfParttimeLabor,
-                    "personnelNumberOfEthnicMinorities": this.personnelNumberOfEthnicMinorities,
-                    "numberOfChildlabor": this.numberOfChildlabor,
-                    "hiteRetiredPeople": this.hiteRetiredPeople,
-                    "employmentNumberIsRetreatedInside": this.employmentNumberIsRetreatedInside,
-                    "numberOfEmploymentAlreadyDealtWith": this.numberOfEmploymentAlreadyDealtWith,
-                    "disabledWorkersNumber": this.disabledWorkersNumber,
-                    "foreignWorkers": this.foreignWorkers,
-                    "terminateThrLaborEmploymentRelationship": this.terminateThrLaborEmploymentRelationship,
-                    "laborDispatchUsingNumbers": this.laborDispatchUsingNumbers,
-                    "numberOffemaleWorker": this.numberOffemaleWorker,
-                    "numberOfJuvenileWorkers": this.numberOfJuvenileWorkers,
-                    "numberOfMigrantWorkers": this.numberOfMigrantWorkers,
-                    "unitToBorrowStaffNumbers": this.unitToBorrowStaffNumbers,
-                    "internshipTraineePersonnel": this.internshipTraineePersonnel,
-                    "comparedToLastYearWorkerHas": this.comparedToLastYearWorkerHas,
-                    "increaseOrDecreaseTheReason": this.increaseOrDecreaseTheReason,
-                    "actualPayrollNumber": this.actualPayrollNumber,
-                    "totalActualPaymentOFWages": this.totalActualPaymentOFWages,
-                    "individualMinimumWage": this.individualMinimumWage,
-                    "ifWagesListProvided": this.ifWagesListProvided,
-                    "whetherOrWithholdWagesInArrears": this.whetherOrWithholdWagesInArrears,
-                    "inViolantionOftheProvisionsOfTheMinimumWage": this.inViolantionOftheProvisionsOfTheMinimumWage,
-                    "anyViolationOfHighTemperatureAllowance": this.anyViolationOfHighTemperatureAllowance
-                    };
-                this.$store.commit("addCompanyInfo",companyInfo);
-                this.enterpriseName= "";
-                this.socialCreditCode= "";
-                this.enterpriseAddress= "";
-                this.organizationCode= "";
-                this.managementStyle= "";
-                this.email= "";
-                this.website= "";
-                this.industrialCategory= "";
-                this.fax= "";
-                this.establishDate= "";
-                this.simpleName= "";
-                this.enterpriseType= "";
-                this.economicType= "";
-                this.industryType= "";
-                this.moneyType= "";
-                this.regisMoney= "";
-                this.subordinateRelation= "";
-                this.majorCharge= "";
-                this.mainBusiness= "";
-                this.partBusiness= "";
-                this.businessNumber= "";
-                this.legalRepresentative= "";
-                this.repreTelephone= "";
-                this.repreID= "";
-                this.enterpriseChargeName= "";
-                this.enterpriseChargeTelephone= "";
-                this.moneyChargeName= "";
-                this.moneyChargeTelephone= "";
-                this.linkPerson= "";
-                this.linkPersonTelephone= "";
-                this.handoutDate= "";
-                this.effectiveDate= "";
-                this.enterpriseAccountOpenBank= "";
-                this.accountOpenBank= "";
-                this.bankAccount= "";
-                this.numberOfEnployees= "",
-                this.numberOfParttimeWorkers= "",
-                this.numberOfFulltimemployment= "",
-                this.numberOfParttimeLabor= "",
-                this.personnelNumberOfEthnicMinorities= "",
-                this.numberOfChildlabor= "",
-                this.hiteRetiredPeople= "",
-                this.employmentNumberIsRetreatedInside= "",
-                this.numberOfEmploymentAlreadyDealtWith= "",
-                this.disabledWorkersNumber= "",
-                this.foreignWorkers= "",
-                this.terminateThrLaborEmploymentRelationship= "",
-                this.laborDispatchUsingNumbers= "",
-                this.numberOffemaleWorker= "",
-                this.numberOfJuvenileWorkers= "",
-                this.numberOfMigrantWorkers= "",
-                this.unitToBorrowStaffNumbers= "",
-                this.internshipTraineePersonnel= "",
-                this.comparedToLastYearWorkerHas= "",
-                this.increaseOrDecreaseTheReason= "",
-                this.actualPayrollNumber= "",
-                this.totalActualPaymentOFWages= "",
-                this.individualMinimumWage= "",
-                this.ifWagesListProvided= "",
-                this.whetherOrWithholdWagesInArrears= "",
-                this.inViolantionOftheProvisionsOfTheMinimumWage= "",
-                this.anyViolationOfHighTemperatureAllowance= ""
+                var InspectionCompanyInfo = {
+                    QIYEXINXIGUANLI_ID:this.QIYEXINXIGUANLI_ID || "",
+                    SFGLDW:this.pd.SFGLDW || "",
+				    DWMC:this.pd.DWMC || "",
+				    TYSHXYDM:this.pd.TYSHXYDM || "",
+				    DWDZ:this.pd.DWDZ || "",
+				    ZZJGDM:this.pd.ZZJGDM || "",
+				    FDDBRXM:this.pd.FDDBRXM || "",
+				    FDDBRDH:this.pd.FDDBRDH || "",
+				    SHBXDJZBM:this.pd.SHBXDJZBM || "",
+				    SHBX:this.pd.SHBX || "",
+				    GSDJZZZL:this.pd.GSDJZZZL || "",
+				    GSYYZZDJJG:this.pd.GSYYZZDJJG || "",
+				    GSDJFZRQ:this.pd.GSDJFZRQ || "",
+				    GSDJYXQX:this.pd.GSDJYXQX || "",
+				    JJLX:this.pd.JJLX || "",
+				    DJZCLX:this.pd.DJZCLX || "",
+				    DWFZRXM:this.pd.DWFZRXM || "",
+				    DWFZRZW:this.pd.DWFZRZW || "",
+				    DWFZRLXDH:this.pd.DWFZRLXDH || "",
+				    LXR:this.pd.LXR || "",
+				    LXDH:this.pd.LXDH || "",
+				    LZFZRXM:this.pd.LZFZRXM || "",
+				    LZFZRLXDH:this.pd.LZFZRLXDH || "",
+				    CXDJ:this.pd.CXDJ || "",
+				    DWZT:this.pd.DWZT || "",
+				    SSJCJGMC:this.pd.SSJCJGMC || "",
+				    SSWGMC:this.pd.SSWGMC || "",
+				    CYRYZS:this.pd.CYRYZS || "",
+				    QRZYG:this.pd.QRZYG || "",
+				    QRZYGYQD:this.pd.QRZYGYQD || "",
+				    WGDQXHTRS:this.pd.WGDQXHTRS || "",
+				    GDQXHTRS:this.pd.GDQXHTRS || "", 
+				    ZDYGZ:this.pd.ZDYGZ || "",
+				    GZZFRQ:this.pd.GZZFRQ || "",
+				    YCJSHBX:this.pd.YCJSHBX || "",
+			    	tm:new Date().getTime()
+                };
+                this.$http.post('qiyexinxiguanli/add',InspectionCompanyInfo,{withCredentials: true}).then(
+                    result => {
+                        if( result.body.result == "success" ){
+                            // this.$store.commit("addCompanyInfo",result.body.Newdata);
+                            InspectionCompanyInfo.QIYEXINXIGUANLI_ID = result.body.QIYEXINXIGUANLI_ID;
+                            this.$store.commit("addInspectionCompany",InspectionCompanyInfo);
+                            // this.$router.push("/companymanager/inspectioncompanylist");
+                            // this.$router.replace("/companymanager/inspectioncompanylist");
+                            this.$router.go(-1);
+
+                        }
+                        else{
+                            Toast("添加数据失败");
+                        }
+                    },
+                    error => {
+                        console.log(error);
+                    }
+                )
+               
+                this.pd = {};
+                // this.$router.push("/companymanager/inspectioncompanylist");
+
             }
           
         },
         goBack(){
 			//点击后退
-			this.$router.go(-1);
-		}
+            this.$router.go(-1);
+            // this.$router.replace("/companymanager/inspectioncompanylist");
+		},
+        openPicker(id,$event){
+            var that = this;
+            var _self = $event.target;
+            var item = document.getElementById(id);
+            if(that.picker){
+                that.picker.show(function (rs) {
+                    // that.datetime = rs.text;
+                    item.value = rs.text;
+                    that.picker.dispose();
+                    that.picker = null;
+                });
+            }
+            else{
+                var optionsJson = _self.getAttribute('data-options') || '{}';
+                var options = JSON.parse(optionsJson);
+                // var id = _self.getAttribute('id');
+                // console.log(mui.picker);
+                that.picker = new window.mui.DtPicker(options);
+			    that.picker.show(function(rs) {
+                    console.log("show callback")
+                    /*
+                        * rs.value 拼合后的 value
+                        * rs.text 拼合后的 text
+                        * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+                        * rs.m 月，用法同年
+                        * rs.d 日，用法同年
+                        * rs.h 时，用法同年
+                        * rs.i 分（minutes 的第二个字母），用法同年
+                        */
+                    // result.innerText = '选择结果: ' + rs.text;
+                    // that.datetime = rs.text;
+                    item.value = rs.text;
+                    /* 
+                     * 返回 false 可以阻止选择框的关闭
+                     * return false;
+                     */
+                    /*
+                     * 释放组件资源，释放后将将不能再操作组件
+                     * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+                     * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+                     * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+                     */
+                    that.picker.dispose();
+                    that.picker = null;
+                });
+            }
+        }
     },
 }
 </script>
@@ -303,11 +321,11 @@ export default{
     .mui-bar.mui-bar-nav{
         font-size: 19px;
         z-index: 80;
-        height: 50px;
-        background-color: #26a2ff;
+        height: 75px;
+        /* background-color: #26a2ff; */
         .mui-action-back.mui-icon.mui-icon-left-nav.mui-pull-left{
-            color: #fff;
-            padding-top: 14px;
+            color: black;
+            padding-top: 39px;
             .back-btn{
                 font-size: 19px;
                 font-weight: bold;
@@ -315,32 +333,55 @@ export default{
         }
         .mui-title{
             height: 50px;
-            background-color: #26a2ff;
+            background-color: inherit;
             display: flex;
             justify-content: center;
             overflow: hidden;
-            font-weight: bold;
+            /* font-weight: bold; */
             line-height: 52px;
             text-overflow: ellipsis;
             white-space: nowrap;
-            color: #fff;
+            color: black;
             font-size: inherit;
         }
         .mui-pull-right{
             font-size: inherit;
-            color: #fff;
-            background-color: inherit;
+            color: black;
+            margin-top: 15px;
+            /* background-color: inherit; */
             font-weight: bold;
             line-height: 52px;
         }
     }
     .card-container{
         position: absolute;
-        /* height: 100%; */
+        height: 100%;
         /* padding-bottom: 14%; */
         width: 100%;
         /deep/ .mint-field-core{
             margin: 0 !important;
+        }
+        .mui-input-group{
+            margin: 10px 0;
+        }
+        .mui-input-group .mui-input-row {
+            height: auto;
+        }
+        .mui-input-row{
+            textarea{
+                border: 0px;
+                margin-bottom: 0;
+            }
+        }
+        .mui-input-row label~input, .mui-input-row label~select, .mui-input-row label~textarea {
+            position: absolute;
+            float: right;
+            width: 65%;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-bottom: 0;
+            padding-left: 0;
+            border: 0;
         }
     }
 }    
