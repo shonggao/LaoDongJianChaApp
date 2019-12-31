@@ -32,14 +32,14 @@
                                 </div>
                             </div>
                             <div class="mui-card-footer">
-                                <mt-button type="primary" size="small" @click="goCaseHandle(item.PROC_INST_ID_,item.ID_,1,item.CASE_ID_,item.NAME_)">案件处理</mt-button>
+                                <mt-button type="primary" size="small" @click="goCaseHandle(item.PROC_INST_ID_,item.ID_,1,item.CaseID,item.NAME_)">案件处理</mt-button>
                             </div>
                         </div>
                     </div>
                 </mt-tab-container-item>
                 <mt-tab-container-item id="2">
                     <div class="card-container1">
-                        <div class="mui-card" v-for="(item,index) in overDownList" :key="index" @click="goCaseHandle(item.PROC_INST_ID_,item.ID_,0,item.CASE_ID_,item.NAME_)">
+                        <div class="mui-card" v-for="(item,index) in overDownList" :key="index" @click="goCaseHandle(item.PROC_INST_ID_,item.ID_,0,item.CaseID,item.NAME_)">
                             <div class="mui-card-header">
                                 {{ item.PNAME_ }}
                                 <p>{{ item.CREATE_TIME_ | dateFormat }}</p>

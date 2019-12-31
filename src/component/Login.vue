@@ -29,7 +29,7 @@
             </div>
            
         </div>
-        <img class="loginimg-container" src="../image/loginbackground.png"></img>
+        <img class="login-bottom-img" src="../image/loginbackground.png"></img>
     </div>
     
 </template>
@@ -119,12 +119,11 @@ export default{
 <style lang="scss" scoped>
 .login-container{
     width: 100%;
-    height: 100%;
     overflow: auto;
     background-color: #fff;
     .mui-content{
         position: fixed;
-        top: 38%;
+        top: 260px;
         left: 50%;
         transform: translate(-50%,-50%);
         width: 90%;     
@@ -135,7 +134,7 @@ export default{
     }
     .logo-container{
         position: absolute;
-        top: 9%;
+        top: 64px;
         width: 80%;
         left: 50%;
         transform: translateX(-50%);
@@ -144,8 +143,8 @@ export default{
         justify-content: center;
         .logoimg-container{
             /* position: absolute; */
-            width: 90px;
-            height: 90px;
+            width: 5em;
+            height: 5em;
         }
         .systeminfo-container{
             margin: 18px 0 0 0;
@@ -185,10 +184,9 @@ export default{
 .mui-input-row input{
     float: left;
 }
-.loginimg-container{
-    position: absolute;
-    bottom: 0%;
+.login-bottom-img{
+    position: fixed;
+    bottom: 0px;
     width: 100%;
-    height: 35%;
 }
 </style>
