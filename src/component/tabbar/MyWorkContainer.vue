@@ -19,24 +19,20 @@
                     <div class="card-container1">
                         <div class="mui-card" v-for="(item,index) in varList" :key="index">
                             <div class="mui-card-header">
-                                {{ item.PNAME_ }}
-                                <p>{{ item.dateTime | dateFormat }}</p>
+                                {{ item.CaseID }}
+                                <p>{{ item.CREATE_TIME_ | dateFormat }}</p>
                             </div>
                             <div class="mui-card-content">
-                                <div class="mui-card-content-inner">
-                                    <p>
-                                        <span>案件编号： {{ item.CaseID }}</span>&nbsp;
-                                        <span>案件类型： {{ item.CASE_TYPE_ }}</span>&nbsp;
-                                        <span>申请人：{{ item.ASSIGNEE_ }}</span>&nbsp;
-                                        <span>当前任务：{{ item.NAME_ }}</span>&nbsp;
-                                        <!-- <span>电话：{{ item.PNAME_ }}</span> -->
-                                    </p>
-                                    <p>承办人：{{ item.INITATOR }}</p>
-                                    <!-- <p>承办人：{{ item.PNAME_ }}</p> -->
+                                <div class="mui-card-content-inner" style="padding: 16px;line-height: 1.6em;">
+                                    <p>被投诉单位： {{ item.BTSDW_ }}</p>
+                                    <p>投诉人：{{ item.TSR_ }}</p>
+                                    <p>投诉人电话：{{ item.PHONE_ }}</p>
+                                    <p>案件类型： {{ item.CASE_TYPE_ }}</p>
+                                    <p>承办人：{{ item.ASSIGNEE_ }}</p>
                                 </div>
                             </div>
                             <div class="mui-card-footer">
-                                <mt-button type="primary" size="normal" @click="goCaseHandle(item.PROC_INST_ID_,item.ID_,1,item.CASE_ID_,item.NAME_)">案件处理</mt-button>
+                                <mt-button type="primary" size="small" @click="goCaseHandle(item.PROC_INST_ID_,item.ID_,1,item.CASE_ID_,item.NAME_)">案件处理</mt-button>
                             </div>
                         </div>
                     </div>
@@ -46,18 +42,15 @@
                         <div class="mui-card" v-for="(item,index) in overDownList" :key="index" @click="goCaseHandle(item.PROC_INST_ID_,item.ID_,0,item.CASE_ID_,item.NAME_)">
                             <div class="mui-card-header">
                                 {{ item.PNAME_ }}
-                                <p>{{ item.dateTime | dateFormat }}</p>
+                                <p>{{ item.CREATE_TIME_ | dateFormat }}</p>
                             </div>
                             <div class="mui-card-content">
-                                <div class="mui-card-content-inner">
-                                    <p>
-                                        <span>案件编号： {{ item.CASE_ID_ }}</span>&nbsp;
-                                        <span>案件类型： {{ item.CASE_TYPE_ }}</span>&nbsp;
-                                        <span>申请人：{{ item.ASSIGNEE_ }}</span>&nbsp;
-                                        <span>当前任务：{{ item.PNAME_ }}</span>&nbsp;
-                                        <!-- <span>电话：{{ item.PNAME_ }}</span> -->
-                                    </p>
-                                    <p>承办人：{{ item.INITATOR }}</p>
+                                <div class="mui-card-content-inner" style="padding: 16px;line-height: 1.6em;">
+                                    <p>被投诉单位： {{ item.BTSDW_ }}</p>
+                                    <p>投诉人：{{ item.TSR_ }}</p>
+                                    <p>投诉人电话：{{ item.PHONE_ }}</p>
+                                    <p>案件类型： {{ item.CASE_TYPE_ }}</p>
+                                    <p>承办人：{{ item.ASSIGNEE_ }}</p>
                                     <!-- <p>承办人：{{ item.PNAME_ }}</p> -->
                                 </div>
                             </div>
