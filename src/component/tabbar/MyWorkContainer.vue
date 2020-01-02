@@ -41,7 +41,7 @@
                     <div class="card-container1">
                         <div class="mui-card" v-for="(item,index) in overDownList" :key="index" @click="goCaseHandle(item.PROC_INST_ID_,item.ID_,0,item.CaseID,item.NAME_)">
                             <div class="mui-card-header">
-                                {{ item.PNAME_ }}
+                                {{ item.CaseID }}
                                 <p>{{ item.CREATE_TIME_ | dateFormat }}</p>
                             </div>
                             <div class="mui-card-content">
