@@ -15,7 +15,7 @@
                 :to="'/mywork/complaintregistration/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
                 <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
             </mt-cell>
-            <mt-cell title="立案审批" is-link
+            <mt-cell title="立案登记" is-link
                 :to="'/mywork/caseregisterpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
                 <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
             </mt-cell>
@@ -62,29 +62,22 @@
             <div class="form-label">
                 <h4 class="form-title">流程图</h4>
             </div>
-            <div class="img-container">
-                <!-- <img slot="icon" src="../../image/流程图.jpg"> -->
-                <!-- <vue-preview class="preimg" :slides="diagram""></vue-preview> -->
+            <!-- <div class="img-container">
                 <img v-if="imgSrc !== ''" :src="imgSrc" alt="流程图" style="width: 100%;">
+            </div> -->
+            <div class="mui-card" v-for="item in hitaskListSelected" :key="`hitask-${item.ID_}`">
+                <mt-cell :title="item.ACT_NAME_" :value="item.END_TIME_ ? timeFormat(item.END_TIME_) : '正在进行...'"></mt-cell>
+                <div class="mui-card-content-inner" style="padding: 0px 10px;line-height: 1.6em;">
+                    <p v-if="item.ACT_TYPE_ === 'userTask'">承办人：{{ item.ASSIGNEE_ }}</p>
+                    <p v-if="item.END_TIME_" style="color: green;"><span class="mui-icon mui-icon-checkmarkempty"></span>通过</p>
+                </div>
             </div>
-            <!-- <div class="form-label">
-                <h4 class="form-title">相关文件</h4>
-            </div>
-            <mt-cell v-for="(file, index) in fileList" :key="`case-file-${index}`" :title="file.file_name" is-link
-                :to="httpurl + 'file/download?fileName='+file.file_name+'&fileType='+file.file_type+'&caseID='+file.case_id+'&taskID='+file.task_id">
-                <img v-if="file.file_type === '文档'" slot="icon" src="../../image/企业基本信息.png" alt="文档" width="34" height="34">
-                <img v-else slot="icon" src="../../image/图片.png" alt="图片" width="34" height="34">
-            </mt-cell>
-            <mt-cell title="上传文件" @click.native="uploadFiles" style="margin-bottom: 16px;">
-                <img slot="icon" src="../../image/上传.png" alt="上传" width="34" height="34">
-                <input type="file" name="file-upload" multiple="multiple" id="file-upload" style="display: none;">
-            </mt-cell> -->
         </div>
     </div>
 </template>
 <script>
     import httpurl from '../../js/config';
-
+    import moment from 'moment';
     export default {
         data() {
             return {
@@ -107,7 +100,7 @@
                 loading: false,			//加载状态
                 formKeyList: {
                     "form/劳动保障监察投诉登记表.html": 1,
-                    "form/劳动保障监察立案审批表.html": 2,
+                    "form/劳动保障监察立案登记表.html": 2,
                     "form/劳动保障监察调查询问通知书.html": 3,
                     "form/劳动保障监察限期改正指令书.html": 4,
                     "form/劳动保障监察行政处理决定书.html": 5,
@@ -127,7 +120,7 @@
                 httpurl: httpurl,
                 taskKeyMap: {
                     "投诉登记": 1,
-                    "立案审批": 2,
+                    "立案登记": 2,
                     "案件分派": 3,
                     "调查取证": 4,
                     "责令整改": 5,
@@ -151,6 +144,25 @@
                         h: 400
                     }
                 ]
+            },
+            hitaskListSelected: function () {
+                var result = []
+                if (this.hitaskList && this.hitaskList.length > 0) {
+                    this.hitaskList.reduce(function (previous, current) {
+                        if (previous.ACT_ID_ != current.ACT_ID_) {
+                            result.push(previous);
+                        }
+                        return current;
+                    });
+                    result.push(this.hitaskList[this.hitaskList.length - 1]);
+                }
+                console.log(result);
+                return result;
+            },
+            timeFormat: function () {
+                return function (time) {
+                    return moment(time).format("YYYY年MM月DD日 HH:mm")
+                }
             }
         },
         created() {
