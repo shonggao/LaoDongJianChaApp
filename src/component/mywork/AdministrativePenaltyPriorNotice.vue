@@ -4,7 +4,7 @@
             <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="back-btn">返回</span></a>
             <a class="mui-title">行政处罚事先告知书</a>
             <!-- <mt-button type="primary" class="mui-pull-right" @click="addCase">添加</mt-button> -->
-            <a class="mui-pull-right mui-icon mui-icon-right-nav" @click="handle('123')" v-show="(formKey0 == formname)">保存</a>
+            <a class="mui-pull-right mui-icon mui-icon-right-nav" @click="handle('yes')" v-show="(formKey0 == formname)">保存</a>
         </header>
         <div class="card-container">
             <form class="mui-input-group">    
@@ -49,6 +49,18 @@
                     <input type="text" id="Date1" data-options='{"type":"date"}' readonly="readonly" v-model="docVarList.ldbzjcxzcfxzclsxgzs_riqi">
                 </div>
             </form>
+            <div class="form-label">
+                <h4 class="form-title">相关文件</h4>
+            </div>
+            <mt-cell v-for="(file, index) in fileList" :key="`case-file-${index}`" :title="file.file_name" is-link
+                :to="httpurl + 'file/download?fileName='+file.file_name+'&fileType='+file.file_type+'&caseID='+file.case_id+'&taskID='+file.task_id">
+                <img v-if="file.file_type === '文档'" slot="icon" src="../../image/企业基本信息.png" alt="文档" width="34" height="34">
+                <img v-else slot="icon" src="../../image/图片.png" alt="图片" width="34" height="34">
+            </mt-cell>
+            <mt-cell title="上传文件" @click.native="uploadFiles" style="margin-bottom: 16px;">
+                <img slot="icon" src="../../image/上传.png" alt="上传" width="34" height="34">
+                <input type="file" name="file-upload" multiple="multiple" id="file-upload" style="display: none;">
+            </mt-cell>
         </div>
     </div>
 </template>
@@ -59,7 +71,7 @@ export default {
     data() {
         return {
             docVarList: {},
-            formname: "8",
+            formname: "6",
             formKey0: this.$route.params.formKey0,
             PROC_INST_ID_: this.$route.query.PROC_INST_ID_,		//流程实例ID
             ID_: this.$route.query.ID_,				//任务ID
@@ -77,6 +89,10 @@ export default {
                 "ldbzjcxzcfxzclsxgzs_lianxidianhua",
                 "ldbzjcxzcfxzclsxgzs_riqi"
             ],
+            CASE_ID_: "",
+            TASK_ID_: "责令整改",
+            fileList: [],
+            httpurl: httpurl
         }
     },
     created() {
@@ -93,7 +109,14 @@ export default {
 			return originVarList;
 		},
     },
+    mounted() {
+        this.init();
+    },
     methods: {
+        init () {
+            this.CASE_ID_ = this.$route.query.CASE_ID_;
+            this.getFileList();
+        },
         // addCase(){
         //     console.log(this.varListSelected);
         //     this.$router.go(-1);
@@ -178,6 +201,83 @@ export default {
                     that.picker = null;
                 });
             }
+        },
+        // 上传文件
+        uploadFiles: function () {
+            let self = this;
+            let fileInput = document.getElementById("file-upload");
+            if (fileInput) {
+                fileInput.onchange = function () {
+                    let fileList = this.files;
+                    if (fileList.length) {
+                        for (const file of fileList) {
+                            var fileType = "";
+                            if (file.type.startsWith("image")) {
+                                fileType = "图片"
+                            } else {
+                                switch (file.type) {
+                                    case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+                                    case "application/vnd.openxmlformats-officedocument.presentationml.presentation":
+                                    case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
+                                    case "application/vnd.ms-excel":
+                                    case "application/vnd.ms-powerpoint":
+                                    case "application/msword":
+                                    case "application/pdf":
+                                        fileType = "文档"
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            if (fileType === "") {
+                                swal("上传失败", "未知的文件类型", "warning");
+                            } else {
+                                self.submitFiles(file, fileType)
+                            }
+                        }
+                    }
+                }
+                fileInput.click();
+            }
+        },
+        submitFiles: function (file, type) {
+            var self = this;
+            var formData = new FormData();
+            formData.append("files", file);
+            formData.append("caseID", this.CASE_ID_);
+            formData.append("fileType", type);
+            formData.append("taskID", this.TASK_ID_);
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true
+                },
+                type: "POST",
+                url: httpurl + 'file/upload',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (body) {
+                    let data = JSON.parse(body);
+                    if (data.result == "exception") {
+                        //showException("上传失败", data.exception);	//显示异常
+                    } else if (data.error == "duplicate") {
+                        swal("上传失败", "已存在同名文件", "warning");
+                    } else if (data.success) {
+                        swal("上传成功", "已上传到服务器", "success");
+                        let fileInput = document.getElementById("file-upload");
+                        fileInput.value = "";
+                        self.getFileList();
+                    }
+                },
+                error: function (jqXHR) {
+                    $("#ueFrame").tips({
+                        side: 1,
+                        msg: '上传失败',
+                        bg: '#AE81FF',
+                        time: 3
+                    });
+                }
+            })
         }
     },
 }
@@ -286,16 +386,16 @@ export default {
             background-color: white; 
             padding: 7px;
             padding-left: 15px;
-            .form-title:before{
-                /* margin: 10px; */
-                content: "";
-                width: 20px;
-                display: inline-block;
-                height: 25px;
-                background-color: green;
-                margin-right: 10px;
-                vertical-align: middle;
-            }
+        .form-title:before{
+            /* margin: 10px; */
+            content: "";
+            width: 8px;
+            display: inline-block;
+            height: 25px;
+            background-color: #2e8000c2;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
         }
     }
 }

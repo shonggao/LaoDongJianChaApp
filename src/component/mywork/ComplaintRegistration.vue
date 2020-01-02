@@ -191,6 +191,7 @@ export default {
     },
     methods: {
         init () {
+            this.CASE_ID_ = this.$route.query.CASE_ID_;
             this.getFileList();
         },
         addCase(){
@@ -548,10 +549,10 @@ export default {
         .form-title:before{
             /* margin: 10px; */
             content: "";
-            width: 20px;
+            width: 8px;
             display: inline-block;
             height: 25px;
-            background-color: green;
+            background-color: #2e8000c2;
             margin-right: 10px;
             vertical-align: middle;
         }

@@ -11,68 +11,85 @@
             <div class="form-label">
                 <h4 class="form-title">案件文书</h4>
             </div>
-            <mt-cell title="投诉登记表" is-link
+            <mt-cell title="投诉登记" id="task1" is-link
                 :to="'/mywork/complaintregistration/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
                 <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+                <div class="ball" v-show="(formKey0 == '1')"></div>
             </mt-cell>
-            <mt-cell title="立案审批表" is-link
+            <mt-cell title="立案登记" id="task2" is-link
                 :to="'/mywork/caseregisterpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
                 <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+                <div class="ball" v-show="(formKey0 == '2')"></div>
             </mt-cell>
-            <mt-cell slot="icon" title="调查询问通知书" is-link
+            <mt-cell title="案件分派" id="task3" is-link
+                :to="'/mywork/casedeliver/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
+                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+                <div class="ball" v-show="(formKey0 == '3')"></div>
+            </mt-cell>
+            <mt-cell title="调查取证" id="task4" is-link
                 :to="'/mywork/filesendpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
                 <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+                <div class="ball" v-show="(formKey0 == '4')"></div>
             </mt-cell>
-            <mt-cell title="限期改正指令书" is-link
+            <mt-cell title="责令整改" id="task5" is-link
                 :to="'/mywork/correctioninstruction/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
                 <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+                <div class="ball" v-show="(formKey0 == '5')"></div>
             </mt-cell>
-            <mt-cell title="行政处理决定书" is-link
-                :to="'/mywork/punishpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
-                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
-            </mt-cell>
-            <mt-cell title="行政处罚决定书" is-link
-                :to="'/mywork/planpunishpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
-                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
-            </mt-cell>
-            <mt-cell title="移送审批表" is-link
-                :to="'/mywork/trialtransferpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
-                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
-            </mt-cell>
-            <mt-cell title="行政处罚事先告知书" is-link
+            <mt-cell title="行政处理(处罚)事先告知" id="task6" is-link
                 :to="'/mywork/administrativepenaltypriornotice/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
                 <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+                <div class="ball" v-show="(formKey0 == '6')"></div>
             </mt-cell>
-            <mt-cell title="结案审批表" is-link
+            <mt-cell title="行政处理(处罚）" id="task7" is-link
+                :to="'/mywork/punishpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
+                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+                <div class="ball" v-show="(formKey0 == '7')"></div>
+            </mt-cell>
+            <mt-cell title="主动履行" id="task8" is-link
+                :to="'/mywork/carryout/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
+                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+                <div class="ball" v-show="(formKey0 == '8')"></div>
+            </mt-cell>
+            <mt-cell title="移交法院" id="task9" is-link
+                :to="'/mywork/trialtransferpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
+                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+                <div class="ball" v-show="(formKey0 == '9')"></div>
+            </mt-cell>
+            <mt-cell title="主动整改" id="task10" is-link
+                :to="'/mywork/reform/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
+                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+                <div class="ball" v-show="(formKey0 == '10')"></div>
+            </mt-cell>
+            <mt-cell title="移交公安" id="task11" is-link
+                :to="'/mywork/trialtransferpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
+                <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+                <div class="ball" v-show="(formKey0 == '11')"></div>
+            </mt-cell>
+            <mt-cell title="案件结案" id="task12" is-link
                 :to="'/mywork/caseendpage/'+formKey0+'?PROC_INST_ID_='+PROC_INST_ID_+'&ID_='+ID_+'&OPINION='+OPINION+'&ASSIGNEE_='+ASSIGNEE_+'&CASE_ID_='+CASE_ID_">
                 <img slot="icon" src="../../image/企业基本信息.png" width="34" height="34">
+                <div class="ball" v-show="(formKey0 == '12')"></div>
             </mt-cell>
             <div class="form-label">
                 <h4 class="form-title">流程图</h4>
             </div>
-            <div class="img-container">
-                <!-- <img slot="icon" src="../../image/流程图.jpg"> -->
-                <!-- <vue-preview class="preimg" :slides="diagram""></vue-preview> -->
+            <!-- <div class="img-container">
                 <img v-if="imgSrc !== ''" :src="imgSrc" alt="流程图" style="width: 100%;">
+            </div> -->
+            <div class="mui-card" v-for="item in hitaskListSelected" :key="`hitask-${item.ID_}`">
+                <mt-cell :title="item.ACT_NAME_" :value="item.END_TIME_ ? timeFormat(item.END_TIME_) : '正在进行...'"></mt-cell>
+                <div class="mui-card-content-inner" style="padding: 0px 10px;line-height: 1.6em;">
+                    <p v-if="item.ACT_TYPE_ === 'userTask'">承办人：{{ item.ASSIGNEE_ }}</p>
+                    <p v-if="item.END_TIME_" style="color: green;"><span class="mui-icon mui-icon-checkmarkempty"></span>通过</p>
+                </div>
             </div>
-            <!-- <div class="form-label">
-                <h4 class="form-title">相关文件</h4>
-            </div>
-            <mt-cell v-for="(file, index) in fileList" :key="`case-file-${index}`" :title="file.file_name" is-link
-                :to="httpurl + 'file/download?fileName='+file.file_name+'&fileType='+file.file_type+'&caseID='+file.case_id+'&taskID='+file.task_id">
-                <img v-if="file.file_type === '文档'" slot="icon" src="../../image/企业基本信息.png" alt="文档" width="34" height="34">
-                <img v-else slot="icon" src="../../image/图片.png" alt="图片" width="34" height="34">
-            </mt-cell>
-            <mt-cell title="上传文件" @click.native="uploadFiles" style="margin-bottom: 16px;">
-                <img slot="icon" src="../../image/上传.png" alt="上传" width="34" height="34">
-                <input type="file" name="file-upload" multiple="multiple" id="file-upload" style="display: none;">
-            </mt-cell> -->
         </div>
     </div>
 </template>
 <script>
     import httpurl from '../../js/config';
-
+    import moment from 'moment';
     export default {
         data() {
             return {
@@ -95,7 +112,7 @@
                 loading: false,			//加载状态
                 formKeyList: {
                     "form/劳动保障监察投诉登记表.html": 1,
-                    "form/劳动保障监察立案审批表.html": 2,
+                    "form/劳动保障监察立案登记表.html": 2,
                     "form/劳动保障监察调查询问通知书.html": 3,
                     "form/劳动保障监察限期改正指令书.html": 4,
                     "form/劳动保障监察行政处理决定书.html": 5,
@@ -109,10 +126,40 @@
                 docHTML: "",
                 cacheTimmer: null,
                 docVarList: {},
-                CASE_ID_: "",
-                TASK_ID_: "",
+                CASE_ID_: this.$route.query.CASE_ID_,
+                TASK_ID_: this.$route.query.TASK_ID_,
                 fileList: [],
-                httpurl: httpurl
+                httpurl: httpurl,
+                taskKeyMap: {
+                    "投诉登记": 1,
+                    "立案登记": 2,
+                    "案件分派": 3,
+                    "调查取证": 4,
+                    "责令整改": 5,
+                    "行政处理(处罚)事先告知": 6,
+                    "行政处理(处罚)": 7,
+                    "主动履行": 8,
+                    "移交法院": 9,
+                    "主动整改": 10,
+                    "移交公安": 11,
+                    "案件结案": 12
+                },
+                taskNameList:{
+                    "投诉登记": "task1",
+                    "立案登记": "task2",
+                    "案件分派": "task3",
+                    "调查取证": "task4",
+                    "责令整改": "task5",
+                    "行政处理(处罚)事先告知": "task6",
+                    "行政处理(处罚)": "task7",
+                    "主动履行": "task8",
+                    "移交法院": "task9",
+                    "主动整改": "task10",
+                    "移交公安": "task11",
+                    "案件结案": "task12"
+                },
+                taskIDList: ["task1","task2","task3","task4","task5","task6","task7","task8","task9","task10","task11","task12"],
+                taskNameArray: [],
             }
         },
         computed: {
@@ -125,6 +172,25 @@
                         h: 400
                     }
                 ]
+            },
+            hitaskListSelected: function () {
+                var result = []
+                if (this.hitaskList && this.hitaskList.length > 0) {
+                    this.hitaskList.reduce(function (previous, current) {
+                        if (previous.ACT_ID_ != current.ACT_ID_) {
+                            result.push(previous);
+                        }
+                        return current;
+                    });
+                    result.push(this.hitaskList[this.hitaskList.length - 1]);
+                }
+                console.log(result);
+                return result;
+            },
+            timeFormat: function () {
+                return function (time) {
+                    return moment(time).format("YYYY年MM月DD日 HH:mm")
+                }
             }
         },
         created() {
@@ -141,14 +207,12 @@
                 this.PROC_INST_ID_ = this.getUrlKey('PROC_INST_ID_');	//链接参数
                 this.ID_ = this.getUrlKey('ID_');						//链接参数
                 this.FILENAME = this.getUrlKey('FILENAME');				//链接参数
-                this.CASE_ID_ = this.getUrlKey('CASE_ID_');				//链接参数
-                this.TASK_ID_ = this.getUrlKey('TASK_ID_');				//链接参数
                 if (this.flag == '1') {
                     this.getData();
+                    this.formKey0 = this.taskKeyMap[this.TASK_ID_];
                 }
                 else {
                     this.getData2();
-                    console.log(2);
                 }
                 this.getFileList();
             },
@@ -171,10 +235,23 @@
                             vm.varList = data.varList;
                             vm.imgSrc = data.imgSrc;
                             vm.loading = false;
-                            vm.formKey0 = vm.formKeyList[data.formKey];
                             vm.formKey = data.formKey;
+                            var taskNameArray = new Array(12);
+                            var i = 0;
+                            for(const item of data.hitaskList){
+                                taskNameArray[i] = vm.taskNameList[item.ACT_NAME_];
+                                i++;
+                            }
                             for (const item of vm.hitaskList) {
                                 vm.docVarList[item.NAME_] = item.TEXT_
+                            }
+                            for( const item in vm.taskIDList){
+                                if(taskNameArray.indexOf(vm.taskIDList[item]) != -1){
+                                    if(vm.TASK_ID_ != vm.taskIDList[item]){
+                                        document.getElementById(vm.taskIDList[item]).style.color = "inherit";
+                                        document.getElementById(vm.taskIDList[item]).style.pointerEvents = "auto";
+                                    }    
+                                }
                             }
                             for (const item of vm.varList) {
                                 vm.docVarList[item.NAME_] = item.TEXT_
@@ -211,6 +288,20 @@
                             vm.formKey = data.formKey;
                             for (const item of vm.hitaskList) {
                                 vm.docVarList[item.NAME_] = item.TEXT_
+                            }
+                            var taskNameArray = new Array(12);
+                            var i = 0;
+                            for(const item of data.hitaskList){
+                                taskNameArray[i] = vm.taskNameList[item.ACT_NAME_];
+                                i++;
+                            }
+                            for( const item in vm.taskIDList){
+                                if(taskNameArray.indexOf(vm.taskIDList[item]) != -1){
+                                    if(vm.TASK_ID_ != vm.taskIDList[item]){
+                                        document.getElementById(vm.taskIDList[item]).style.color = "inherit";
+                                        document.getElementById(vm.taskIDList[item]).style.pointerEvents = "auto";
+                                    }    
+                                }
                             }
                             for (const item of vm.varList) {
                                 vm.docVarList[item.NAME_] = item.TEXT_
@@ -455,7 +546,16 @@
                 vertical-align: middle;
             }
         }
-
+        .mint-cell{
+            color: gray;
+            pointer-events: none;
+        }
+        .ball{
+            background: green;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
         .card-container {
             position: absolute;
             height: 100%;

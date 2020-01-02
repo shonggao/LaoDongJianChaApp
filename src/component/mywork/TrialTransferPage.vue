@@ -113,7 +113,7 @@ export default {
     data() {
         return {
             docVarList: {},
-            formname: "7",
+            formname: "9",
             formKey0: this.$route.params.formKey0,
             PROC_INST_ID_: this.$route.query.PROC_INST_ID_,		//流程实例ID
             ID_: this.$route.query.ID_,				//任务ID
@@ -162,6 +162,7 @@ export default {
     },
     methods: {
         init () {
+            this.CASE_ID_ = this.$route.query.CASE_ID_;
             this.getFileList();
         },
         addCase(){
@@ -465,14 +466,14 @@ export default {
             .form-title:before{
                 /* margin: 10px; */
                 content: "";
-                width: 20px;
+                width: 8px;
                 display: inline-block;
                 height: 25px;
-                background-color: green;
+                background-color: #2e8000c2;
                 margin-right: 10px;
                 vertical-align: middle;
+            }
         }
-    }
     }
 }
 </style>

@@ -2,81 +2,12 @@
     <div class="home-container">
         <header id="header" class="mui-bar mui-bar-nav">
             <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="back-btn">返回</span></a>
-            <a class="mui-title">行政处理决定书</a>
+            <a class="mui-title">主动履行</a>
             <!-- <mt-button type="primary" class="mui-pull-right" @click="addCase">添加</mt-button> -->
             <a class="mui-pull-right mui-icon mui-icon-right-nav" @click="handle('yes')" v-show="(formKey0 == formname)">保存</a>
         </header>
         <div class="card-container">
-            <form class="mui-input-group">
-                <div class="mui-input-row">
-                    <label>被行政处理人：</label>
-                    <input type="text" placeholder="输入被行政处理人" v-model="docVarList.ldbzjcxzcljd_beixingzhengchuliren">
-                </div>
-                <div class="mui-input-row" style="margin: 2px 0">
-                    <textarea id="textarea" rows="5" placeholder="输入违法事实" v-model="docVarList.ldbzjcxzcljd_weifashishi"></textarea>
-                </div>
-            </form>
-            <form class="mui-input-group">
-                <!-- <label style="width:35%;padding: 5px 15px;">产业类别：</label> -->
-                <div class="mui-input-row">
-                    <label>立案依据：</label>
-                    <input type="text" placeholder="输入立案依据" v-model="docVarList.ldbzjcxzcljd_lianyiju">
-                </div>
-                <div class="mui-input-row">
-                    <label>违反依据：</label>
-                    <input type="text" placeholder="输入违反依据" v-model="docVarList.ldbzjcxzcljd_weifanyiju">
-                </div>
-                <div class="mui-input-row">
-                    <label>处理依据：</label>
-                    <input type="text" placeholder="输入处理依据" v-model="docVarList.ldbzjcxzcljd_chuliyiju">
-                </div>
-            </form>
-            <form class="mui-textarea">
-                <!-- <label style="width:35%;padding: 5px 15px;">产业类别：</label> -->
-                <div class="mui-input-row" style="margin: 2px 0">
-                    <textarea id="textarea" rows="5" placeholder="输入行政处罚内容" v-model="docVarList.ldbzjcxzcljd_xingzhengchulineirong"></textarea>
-                </div>
-            </form>
-            <form class="mui-input-group">
-                <!-- <label style="width:35%;padding: 5px 15px;">产业类别：</label> -->
-                <div class="mui-input-row">
-                    <label>上级部门：</label>
-                    <input type="text" placeholder="输入上级部门" v-model="docVarList.ldbzjcxzcljd_shangjibumen">
-                </div>
-                <div class="mui-input-row">
-                    <label>人民政府：</label>
-                    <input type="text" placeholder="输入人民政府" v-model="docVarList.ldbzjcxzcljd_renminzhengfu">
-                </div>
-                <div class="mui-input-row">
-                    <label>人民法院：</label>
-                    <input type="text" placeholder="输入人民法院" v-model="docVarList.ldbzjcxzcljd_renminfayuan">
-                </div>
-                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('Date1',$event)">
-                    <label data-options='{"type":"date"}'>日期：</label>
-                    <input type="text" id="Date1" data-options='{"type":"date"}' readonly="readonly" v-model="docVarList.ldbzjcxzcljd_riqi">
-                </div>
-            </form>
-            <form  class="mui-input-group">
-                <div class="mui-input-row">
-                    <label>后续处理：</label>
-                    <select name="caseSource" id="caseSource" class="mui-select fluid" v-model="docVarList.RESULT">
-                        <option value="主动履行" selected>主动履行</option>
-                        <option value="移交公安">移交公安</option>
-                    </select>
-                </div>
-            </form>
-            <div class="form-label">
-                <h4 class="form-title">相关文件</h4>
-            </div>
-            <mt-cell v-for="(file, index) in fileList" :key="`case-file-${index}`" :title="file.file_name" is-link
-                :to="httpurl + 'file/download?fileName='+file.file_name+'&fileType='+file.file_type+'&caseID='+file.case_id+'&taskID='+file.task_id">
-                <img v-if="file.file_type === '文档'" slot="icon" src="../../image/企业基本信息.png" alt="文档" width="34" height="34">
-                <img v-else slot="icon" src="../../image/图片.png" alt="图片" width="34" height="34">
-            </mt-cell>
-            <mt-cell title="上传文件" @click.native="uploadFiles" style="margin-bottom: 16px;">
-                <img slot="icon" src="../../image/上传.png" alt="上传" width="34" height="34">
-                <input type="file" name="file-upload" multiple="multiple" id="file-upload" style="display: none;">
-            </mt-cell>
+            <mt-radio title="委派" v-model="ASSIGNEE_" :options="userOption"></mt-radio>
         </div>
     </div>
 </template>
@@ -86,29 +17,38 @@ export default {
     data() {
         return {
             docVarList: {},
-            formname: "5",
+            formname: "8",
             formKey0: this.$route.params.formKey0,
             PROC_INST_ID_: this.$route.query.PROC_INST_ID_,		//流程实例ID
             ID_: this.$route.query.ID_,				//任务ID
             OPINION: this.$route.query.OPINION,			//审批意见
             ASSIGNEE_: this.$route.query.ASSIGNEE_,			//待办人
             vars: [
-                "ldbzjcxzcljd_beixingzhengchuliren",
-                "ldbzjcxzcljd_weifashishi",
-                "ldbzjcxzcljd_lianyiju",
-                "ldbzjcxzcljd_weifanyiju",
-                "ldbzjcxzcljd_chuliyiju",
-                "ldbzjcxzcljd_xingzhengchulineirong",
-                "ldbzjcxzcljd_shangjibumen",
-                "ldbzjcxzcljd_renminzhengfu",
-                "ldbzjcxzcljd_renminfayuan",
-                "ldbzjcxzcljd_riqi",
-                "RESULT",
+               "ldbzjclaspb_anyou",
+               "ldbzjclaspb_danweimingcheng",
+               "ldbzjclaspb_dizhi",
+               "ldbzjclaspb_youbian",
+               "ldbzjclaspb_fddbr_xingming",
+               "ldbzjclaspb_fddbr_zhiwu",
+               "ldbzjclaspb_fddbr_lianxidianhua",
+               "ldbzjclaspb_zyfzr_xingming",
+               "ldbzjclaspb_zyfzr_zhiwu",
+               "ldbzjclaspb_zyfzr_lianxidianhua",
+               "ldbzjclaspb_zyfzr_qitalianxifangshi",
+               "ldbzjclaspb_anjianlaiyuan",
+               "ldbzjclaspb_jibenanqing",
+               "ldbzjclaspb_lianyiju",
+               "ldbzjclaspb_lianshenchabumenyijian",
+               "ldbzjclaspb_lianshenchabumenyijianriqi",
+               "ldbzjclaspb_jianchajigoufuzerenshenpiyijian",
+               "ldbzjclaspb_jianchajigoufuzerenshenpiyijianriqi",
+               "ldbzjclaspb_beizhu",
             ],
             CASE_ID_: "",
-            TASK_ID_: "行政处理(处罚)",
+            TASK_ID_: "立案审批",
             fileList: [],
-            httpurl: httpurl
+            httpurl: httpurl,
+            userList: []
         }
     },
     created() {
@@ -120,10 +60,16 @@ export default {
 			var self = this;
 			var originVarList = {}
             for( const key in this.vars){
-                originVarList[this.vars[key]] = this.docVarList[this.vars[key]];
+                originVarList[this.vars[key]] = this.docVarList[this.vars[key]] || "";
             }
 			return originVarList;
-		},
+        },
+        userOption: function () {
+            return this.userList.map(item => ({
+                label: item.USERNAME,
+                value: item.NAME
+            }))
+        }
     },
     mounted() {
         this.init();
@@ -132,6 +78,7 @@ export default {
         init () {
             this.CASE_ID_ = this.$route.query.CASE_ID_;
             this.getFileList();
+            this.getUserList();
         },
         addCase(){
 
@@ -155,10 +102,11 @@ export default {
 					},
 					type: "POST",
 					url: httpurl + 'rutask/handle',
-					data: { taskVariables: taskVariables, msg: msg, ID_: this.ID_, ASSIGNEE_: this.ASSIGNEE_, PROC_INST_ID_: this.PROC_INST_ID_, OPINION: this.OPINION, tm: new Date().getTime() },
+					data: { taskVariables: taskVariables, msg: msg, ID_: vm.ID_, ASSIGNEE_: vm.ASSIGNEE_, PROC_INST_ID_: vm.PROC_INST_ID_, OPINION: vm.OPINION, tm: new Date().getTime() },
 					dataType: 'json',
 					success: function (data) {
 						if ("success" == data.result) {
+                            console.log(taskVariables);
                             vm.$router.go(-2);
 						} else if ("exception" == data.result) {
 							showException("提交审批", data.exception);//显示异常
@@ -188,7 +136,6 @@ export default {
                 // console.log(mui.picker);
                 that.picker = new window.mui.DtPicker(options);
                 that.picker.show(function(rs) {
-                    console.log("show callback")
                     /*
                         * rs.value 拼合后的 value
                         * rs.text 拼合后的 text
@@ -215,6 +162,30 @@ export default {
                     that.picker = null;
                 });
             }
+        },
+        getUserList: function () {
+            let self = this;
+            var vm = this;
+            this.loading = true;
+            //发送 post 请求
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true
+                },
+                type: "POST",
+                url: httpurl + 'user/listUsersForWindow?showCount=-1&currentPage=1'+'&caseID='+this.CASE_ID_+"&taskID="+this.TASK_ID_,
+                data: { PROC_INST_ID_: this.PROC_INST_ID_, ID_: this.ID_, FILENAME: this.FILENAME, tm: new Date().getTime() },
+                dataType: "json",
+                success: function (data) {
+                    if ("success" == data.result) {
+                        vm.userList = data.userList;
+                    } else if ("exception" == data.result) {
+                        showException("用户列表", data.exception);	//显示异常
+                    }
+                }
+            }).done().fail(function () {
+                swal("登录失效!", "请求服务器无响应，稍后再试", "warning");
+            });
         },
         getFileList: function () {
             let self = this;
@@ -376,16 +347,6 @@ export default {
         .mui-input-group .mui-input-row {
             height: auto;
         }
-        .mui-textarea{
-            margin: 10px 0 0 0;
-            p {
-                font-size: 17px;
-                margin-top: 0;
-                margin-bottom: 0px;
-                color: #000;
-                margin-left: 15px;
-            }
-        }
         .mui-input-row{
             textarea{
                 border: 0px;
@@ -430,16 +391,16 @@ export default {
             background-color: white; 
             padding: 7px;
             padding-left: 15px;
-        .form-title:before{
-            /* margin: 10px; */
-            content: "";
-            width: 8px;
-            display: inline-block;
-            height: 25px;
-            background-color: #2e8000c2;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
+            .form-title:before{
+                /* margin: 10px; */
+                content: "";
+                width: 8px;
+                display: inline-block;
+                height: 25px;
+                background-color: #2e8000c2;
+                margin-right: 10px;
+                vertical-align: middle;
+            }
         }
     }
 }

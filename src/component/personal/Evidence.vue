@@ -6,76 +6,12 @@
             <!-- <a class="mui-icon mui-icon-plusempty mui-pull-right" @click="downs()"></a> -->
         </header>
         <div class="card-container">
-            <div class="mui-card">
-                <div class="mui-card-header">
-                    案件名称
-                    <p>2018-11-30 10:28</p>
-                </div>
-                <div class="mui-card-content">
-                    <!-- 缩略图区域 -->
-                    <div class="thumbs">
-                        <vue-preview class="preimg" :slides="list" @close="handleClose"></vue-preview>
-                    </div>
-                </div>
-            </div>
-            <div class="mui-card">
-                <div class="mui-card-header">
-                    案件名称
-                    <p>2018-11-30 10:28</p>
-                </div>
-                <div class="mui-card-content">
-                    <!-- 缩略图区域 -->
-                    <div class="thumbs">
-                        <vue-preview class="preimg" :slides="list" @close="handleClose"></vue-preview>
-                    </div>
-                </div>
-            </div>
-            <div class="mui-card">
-                <div class="mui-card-header">
-                    案件名称
-                    <p>2018-11-30 10:28</p>
-                </div>
-                <div class="mui-card-content">
-                    <!-- 缩略图区域 -->
-                    <div class="thumbs">
-                        <vue-preview class="preimg" :slides="list" @close="handleClose"></vue-preview>
-                    </div>
-                </div>
-            </div>
-            <div class="mui-card">
-                <div class="mui-card-header">
-                    案件名称
-                    <p>2018-11-30 10:28</p>
-                </div>
-                <div class="mui-card-content">
-                    <!-- 缩略图区域 -->
-                    <div class="thumbs">
-                        <vue-preview class="preimg" :slides="list" @close="handleClose"></vue-preview>
-                    </div>
-                </div>
-            </div>
-            <div class="mui-card">
-                <div class="mui-card-header">
-                    案件名称
-                    <p>2018-11-30 10:28</p>
-                </div>
-                <div class="mui-card-content">
-                    <!-- 缩略图区域 -->
-                    <div class="thumbs">
-                        <vue-preview class="preimg" :slides="list" @close="handleClose"></vue-preview>
-                    </div>
-                </div>
-            </div>
-            <div class="mui-card">
-                <div class="mui-card-header">
-                    案件名称
-                    <p>2018-11-30 10:28</p>
-                </div>
-                <div class="mui-card-content">
-                    <!-- 缩略图区域 -->
-                    <div class="thumbs">
-                        <vue-preview class="preimg" :slides="list" @close="handleClose"></vue-preview>
-                    </div>
+            <div class="mui-card" v-for="item in caseList" :key="`case-${item.id}`" @click="goFileList(item.ldbzjctsdjb_tsrqk_anjianbianhao)">
+                <mt-cell :title="item.ldbzjctsdjb_tsrqk_anjianbianhao" :value="''"></mt-cell>
+                <div class="mui-card-content-inner" style="padding: 0px 10px 16px 10px;line-height: 1.6em;">
+                    <p>投诉人姓名：{{ item.ldbzjctsdjb_tsrqk_xingming }}</p>
+                    <p>投诉人联系电话：{{ item.ldbzjctsdjb_tsrqk_lianxidianhua }}</p>
+                    <p>投诉人地址：{{ item.ldbzjctsdjb_tsrqk_dizhi }}</p>
                 </div>
             </div>
         </div>
@@ -84,6 +20,8 @@
 </template>
 <script>
 import { Toast } from "mint-ui";
+import httpurl from '../../js/config';
+
 export default{
     data() {
         return {
@@ -91,11 +29,12 @@ export default{
             list: [],
             id: 37,
             src: '',
+            caseList: []
         }
     },
     created() {
         this.$emit("pageChanged");
-        this.getThumbs();
+        this.getCaseList();
     },
     methods: {
         getThumbs(){
@@ -115,6 +54,29 @@ export default{
             }, error =>{
                 Toast("图片获取失败");
             })
+        },
+        getCaseList () {
+            let vm = this;
+            this.loading = true;
+            this.TYPE = null == $("#TYPE").val() ? '' : $("#TYPE").val();
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true
+                },
+                type: "POST",
+                url: httpurl + 'file/caseList?showCount=-1&currentPage=1',
+                data: { KEYWORDS: this.KEYWORDS, TYPE: this.TYPE, tm: new Date().getTime() },
+                dataType: "json",
+                success: function (data) {
+                    if ("success" == data.result) {
+                        vm.caseList = data.varList;
+                    } else if ("exception" == data.result) {
+                        showException("办案管理", data.exception);//显示异常
+                    }
+                }
+            }).done().fail(function () {
+                swal("登录失效!", "请求服务器无响应，稍后再试", "warning");
+            });
         },
         handleClose () {
             console.log('close event')
@@ -193,6 +155,9 @@ export default{
         downs(){
             this.downloadIamge('../../image/icon2.png', 'pic')
         },
+        goFileList (caseID) {
+            this.$router.push(`/personal/evidence/${caseID}/fileList`)
+        }
     },
 }
 </script>
