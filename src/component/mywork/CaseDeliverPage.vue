@@ -7,7 +7,10 @@
             <a class="mui-pull-right mui-icon mui-icon-right-nav" @click="handle('yes')" v-show="(formKey0 == formname)">保存</a>
         </header>
         <div class="card-container">
-            <mt-radio title="委派" v-model="ASSIGNEE_" :options="userOption"></mt-radio>
+            <div class="form-label">
+                <h4 class="form-title">委派</h4>
+            </div>
+            <deliver-component v-model="ASSIGNEE_"></deliver-component>
         </div>
     </div>
 </template>
@@ -22,7 +25,7 @@ export default {
             PROC_INST_ID_: this.$route.query.PROC_INST_ID_,		//流程实例ID
             ID_: this.$route.query.ID_,				//任务ID
             OPINION: this.$route.query.OPINION,			//审批意见
-            ASSIGNEE_: this.$route.query.ASSIGNEE_,			//待办人
+            ASSIGNEE_: this.$route.query.ASSIGNEE_ || "" ,			//待办人
             vars: [
                "ldbzjclaspb_anyou",
                "ldbzjclaspb_danweimingcheng",
