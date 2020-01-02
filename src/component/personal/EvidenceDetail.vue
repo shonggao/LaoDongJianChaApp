@@ -16,7 +16,7 @@
             </mt-cell> -->
             <div class="img-container">
                 <div class="img-item-container" v-for="item in imageList" :key="`image-${item.file_name}`">
-                    <img style="width: 100%;" preview="0" :src="imageLink(item)" :alt="item.file_name">
+                    <img style="width: 100%;" preview="0" :src="imageLink(item)" :alt="item.file_name" @click="onImageClick(item)">
                     <!-- <img style="width: 100%;" src="https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=2d903c23b50e7bec238f0be71f1e9500/472309f790529822669f11efdaca7bcb0a46d469.jpg" :alt="item.file_name"> -->
                 </div>
             </div>
@@ -78,6 +78,20 @@
                 // this.$router.go(-1);
                 this.$router.replace('/personal/evidence');            
             },
+            onImageClick (item) {
+                this.$router.push({
+                    name: "evidencePhotoView",
+                    params: {
+                        caseID: item.case_id
+                    },
+                    query: {
+                        file_type: item.file_type,
+                        file_name: item.file_name,
+                        case_id: item.case_id,
+                        task_id: item.task_id,
+                    }
+                })
+            }
         }
     }
 </script>
