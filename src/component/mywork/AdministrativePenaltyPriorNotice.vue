@@ -114,8 +114,8 @@ export default {
     },
     methods: {
         init () {
-            this.getFileList();
             this.CASE_ID_ = this.$route.query.CASE_ID_;
+            this.getFileList();
         },
         // addCase(){
         //     console.log(this.varListSelected);
