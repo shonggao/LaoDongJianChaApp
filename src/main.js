@@ -161,6 +161,9 @@ Vue.filter('undefinedTo',function(dataStr, pattern = '——'){
 
 // mui.init();
 
+import DeliverComponent from "./component/mywork/DeliverComponent.vue"
+Vue.component('deliver-component', DeliverComponent);
+
 var vm = new Vue({
     el: '#app',
     render: c => c(app),

@@ -7,7 +7,10 @@
             <a class="mui-pull-right mui-icon mui-icon-right-nav" @click="handle('yes')" v-show="(formKey0 == formname)">保存</a>
         </header>
         <div class="card-container">
-            <mt-radio title="委派" v-model="ASSIGNEE_" :options="userOption"></mt-radio>
+            <div class="form-label">
+                <h4 class="form-title">委派</h4>
+            </div>
+            <deliver-component v-model="ASSIGNEE_"></deliver-component>
         </div>
     </div>
 </template>

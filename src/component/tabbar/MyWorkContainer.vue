@@ -128,9 +128,6 @@ export default{
         		}
         	}).done().fail(function(){
                 swal("登录失效!", "请求服务器无响应，稍后再试", "warning");
-                setTimeout(function () {
-                	window.location.href = "../../login.html";
-                }, 2000);
             });
             $.ajax({
         		xhrFields: {
@@ -152,9 +149,6 @@ export default{
         		}
         	}).done().fail(function(){
                 swal("登录失效!", "请求服务器无响应，稍后再试", "warning");
-                setTimeout(function () {
-                	window.location.href = "../../login.html";
-                }, 2000);
             });
         },
         goCaseHandle(PROC_INST_ID_,ID_,flag,CASE_ID_,TASK_ID_){

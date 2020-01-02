@@ -55,6 +55,10 @@
                 </div>
             </form>
             <div class="form-label">
+                <h4 class="form-title">委派</h4>
+            </div>
+            <deliver-component v-model="ASSIGNEE_"></deliver-component>
+            <div class="form-label">
                 <h4 class="form-title">相关文件</h4>
             </div>
             <mt-cell v-for="(file, index) in fileList" :key="`case-file-${index}`" :title="file.file_name" is-link
