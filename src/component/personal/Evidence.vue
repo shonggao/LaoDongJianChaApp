@@ -156,7 +156,7 @@ export default{
             this.downloadIamge('../../image/icon2.png', 'pic')
         },
         goFileList (caseID) {
-            this.$router.push(`/personal/evidence/${caseID}/fileList`)
+            this.$router.push(`/personal/evidence/${caseID}/file`)
         }
     },
 }
