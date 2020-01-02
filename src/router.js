@@ -27,6 +27,7 @@ import inspectionCompanyInfo from './component/companymanager/InspectionCompanyI
 //导入personal组件
 import workRecord from './component/personal/WorkRecord.vue';
 import evidence from './component/personal/Evidence.vue';
+import evidenceDetail from './component/personal/EvidenceDetail.vue';
 import download from './component/personal/Download.vue';
 
 //导入mywork组件
@@ -92,6 +93,7 @@ var router = new VueRouter({
        
        { path: '/personal/workrecord' , component: workRecord , name: "workrecord"},
        { path: '/personal/evidence' , component: evidence , name: "evidence"},                                              
+       { path: '/personal/evidence/:caseID/fileList' , component: evidenceDetail , name: "evidenceDetail"},                                              
        { path: '/personal/download' , component: download , name: "download"},                                                                                                   
                                                  
        { path: '/mywork/addcase' , component:  addCase, name: "addcase"},

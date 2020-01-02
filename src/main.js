@@ -9,17 +9,23 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 //导入图片预览插件
-import VuePreview from 'vue-preview';
-Vue.use(VuePreview);
-Vue.use(VuePreview, {
-    mainClass: 'pswp--minimal--dark',
-    barsSize: {top: 0, bottom: 0},
-    captionEl: false,
-    fullscreenEl: false,
-    shareEl: false,
-    bgOpacity: 0.85,
-    tapToClose: true,
-    tapToToggleControls: false
+// import VuePreview from 'vue-preview';
+// Vue.use(VuePreview);
+// Vue.use(VuePreview, {
+//     mainClass: 'pswp--minimal--dark',
+//     barsSize: {top: 0, bottom: 0},
+//     captionEl: false,
+//     fullscreenEl: false,
+//     shareEl: false,
+//     bgOpacity: 0.85,
+//     tapToClose: true,
+//     tapToToggleControls: false
+// })
+
+import VuePhotoPreview from 'vue-photo-preview'
+import 'vue-photo-preview/dist/skin.css'
+Vue.use(VuePhotoPreview, {
+    fullscreenEl: false
 })
 
 var store = new Vuex.Store({
@@ -127,7 +133,7 @@ Vue.http.options.emulateJSON = true;
 
 // Vue.http.options.root = 'http://192.168.190.205:8080/fhadmin/';
 
-Vue.http.options.root = 'http://59.173.9.77:8080/fhadmin/';
+Vue.http.options.root = 'http://192.168.190.205:8080/fhadmin/';
 
 //导入APP根组件
 import app from './APP.vue';
