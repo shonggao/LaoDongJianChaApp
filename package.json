@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack",
-    "dev": "webpack-dev-server --port 3000 --open --host",
+    "dev": "webpack-dev-server --port 3000 --open",
     "build": "webpack-dev-server --hide-modules",
     "localSvr": "serve --port 3000",
     "watch": "webpack --watch"

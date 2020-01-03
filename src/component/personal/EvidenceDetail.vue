@@ -71,11 +71,6 @@
                     var fileType = path.substr(index + 1); // substr() 截取剩余的字符，即文件名doc
                     return fileType;
                 }
-            },
-            imageLink: function () {
-                return function (item) {
-                    return httpurl + 'file/download?fileName='+item.file_name+'&fileType='+item.file_type+'&caseID='+item.case_id+'&taskID='+item.task_id;
-                }
             }
         },
         methods: {
@@ -103,7 +98,7 @@
                 });
             },
             download(url){
-                window.open(url);
+                window.open(encodeURI(url), "_system");
             },
             goBack (){
                 //点击后退
@@ -123,6 +118,9 @@
                         task_id: item.task_id,
                     }
                 })
+            },
+            imageLink: function (item) {
+                return `http://192.168.190.205:8080/fhadminfile/${item.case_id}/${item.task_id}/${item.file_name}`;
             }
         }
     }
