@@ -108,7 +108,7 @@
         </div>
     </template>
     <script>
-    import httpurl from '../../js/config';
+    import httpurl, { fileurl } from '../../js/config';
     export default {
         data() {
             return {

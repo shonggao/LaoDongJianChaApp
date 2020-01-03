@@ -131,7 +131,7 @@ Vue.http.options.emulateJSON = true;
 // Vue.http.options.root = 'http://192.168.190.205:8080/fhadmin/';
 
 
-Vue.http.options.root = 'http://192.168.190.205:8080/fhadmin/';
+Vue.http.options.root = 'http://59.173.9.77:8080/fhadmin/';
 
 // Vue.http.options.root = 'http://59.173.9.77:8080/fhadmin/';
 

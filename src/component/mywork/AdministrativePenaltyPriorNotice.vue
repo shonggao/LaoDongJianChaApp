@@ -57,7 +57,7 @@
                 <h4 class="form-title">相关文件</h4>
             </div>
             <mt-cell v-for="(file, index) in fileList" :key="`case-file-${index}`" :title="file.file_name" is-link
-                :to="`http://192.168.190.205:8080/fhadminfile/${file.case_id}/${file.task_id}/${file.file_name}`">
+                :to="`${fileurl}${file.case_id}/${file.task_id}/${file.file_name}`">
                 <img v-if="file.file_type === '文档'" slot="icon" src="../../image/企业基本信息.png" alt="文档" width="34" height="34">
                 <img v-else slot="icon" src="../../image/图片.png" alt="图片" width="34" height="34">
             </mt-cell>
@@ -69,7 +69,7 @@
     </div>
 </template>
 <script>
-import httpurl from '../../js/config';
+import httpurl, { fileurl } from '../../js/config';
 
 export default {
     data() {

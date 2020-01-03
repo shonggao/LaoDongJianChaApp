@@ -88,7 +88,7 @@
     </div>
 </template>
 <script>
-    import httpurl from '../../js/config';
+    import httpurl, { fileurl } from '../../js/config';
     import moment from 'moment';
     export default {
         data() {

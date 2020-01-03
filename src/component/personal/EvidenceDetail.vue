@@ -35,7 +35,7 @@
     </div>
 </template>
 <script>
-    import httpurl from '../../js/config';
+    import httpurl, {fileurl} from '../../js/config';
     import moment from 'moment';
     export default {
         data() {
@@ -120,7 +120,7 @@
                 })
             },
             imageLink: function (item) {
-                return `http://192.168.190.205:8080/fhadminfile/${item.case_id}/${item.task_id}/${item.file_name}`;
+                return `${fileurl}${item.case_id}/${item.task_id}/${item.file_name}`;
             }
         }
     }
