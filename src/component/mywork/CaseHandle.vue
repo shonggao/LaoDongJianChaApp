@@ -72,7 +72,7 @@
                 <div class="ball" v-show="(formKey0 == '12')"></div>
             </mt-cell>
             <div class="form-label">
-                <h4 class="form-title">流程图</h4>
+                <h4 class="form-title">流程信息</h4>
             </div>
             <!-- <div class="img-container">
                 <img v-if="imgSrc !== ''" :src="imgSrc" alt="流程图" style="width: 100%;">
