@@ -24,8 +24,8 @@
                 </mt-cell> -->
                 <mt-cell title="查看取证" is-link to="/personal/evidence">
                 </mt-cell>
-                <mt-cell title="查看下载内容" is-link to="/personal/download">
-                </mt-cell>
+                <!-- <mt-cell title="查看下载内容" is-link to="/personal/download">
+                </mt-cell> -->
             </div>       
             <div class="list-container">
                 <mt-cell title="修改密码" is-link>

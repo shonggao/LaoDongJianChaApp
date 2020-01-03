@@ -18,6 +18,17 @@
                 <div class="img-item-container" v-for="item in imageList" :key="`image-${item.file_name}`">
                     <img style="width: 100%;" preview="0" :src="imageLink(item)" :alt="item.file_name" @click="onImageClick(item)">
                     <!-- <img style="width: 100%;" src="https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=2d903c23b50e7bec238f0be71f1e9500/472309f790529822669f11efdaca7bcb0a46d469.jpg" :alt="item.file_name"> -->
+                </div> 
+            </div>
+            <div class="img-container">
+                <div class="img-item-container" v-for="item in wordList" :key="`file-${item.file_name}`">
+                    <img v-if="wordType(item.file_name) == 'pdf'" src="../../image/pdf.jpg" style="width: 100%; border-radius: 20px; overflow: hidden" @click="download(imageLink(item))">
+                    <img v-else-if="wordType(item.file_name) == 'doc'" src="../../image/doc.jpg" style="width: 100%; border-radius: 20px; overflow: hidden" @click="download(imageLink(item))">
+                    <img v-else-if="wordType(item.file_name) == 'docx'" src="../../image/docx.jpg" style="width: 100%; border-radius: 20px; overflow: hidden" @click="download(imageLink(item))">
+                    <img v-else-if="wordType(item.file_name) == 'xlxs'" src="../../image/xlxs.jpg" style="width: 100%; border-radius: 20px; overflow: hidden" @click="download(imageLink(item))">
+                    <img v-else-if="wordType(item.file_name) == 'ppt'" src="../../image/ppt.jpg" style="width: 100%; border-radius: 20px; overflow: hidden" @click="download(imageLink(item))">
+                    <img v-else src="../../image/xlxs.jpg" style="width: 100%; border-radius: 20px; overflow: hidden" @click="download(imageLink(item))">
+                    <!-- <img style="width: 100%;" src="https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=2d903c23b50e7bec238f0be71f1e9500/472309f790529822669f11efdaca7bcb0a46d469.jpg" :alt="item.file_name"> -->
                 </div>
             </div>
         </div>
@@ -40,8 +51,26 @@
         },
         computed: {
             imageList: function () {
-                console.log(this.fileList.filter(item => item.file_type === '图片'))
+                // console.log(this.fileList.filter(item => item.file_type === '图片'))
                 return this.fileList.filter(item => item.file_type === '图片')
+            },
+            wordList: function(){
+                return this.fileList.filter(item => item.file_type === '文档')
+            },
+            wordLink:function () {
+                return function (item) {
+                    console.log("../../image/"+this.wordType(item.file_name)+'.jpg');
+                    return "../../image/"+this.wordType(item.file_name)+'.jpg';
+                }
+            },
+            wordType: function(){
+                // var path = item.file_name;
+                return function(path){
+                    console.log(path)
+                    var index = path.lastIndexOf("."); // lastIndexOf("/")  找到最后一个  /  的位置
+                    var fileType = path.substr(index + 1); // substr() 截取剩余的字符，即文件名doc
+                    return fileType;
+                }
             },
             imageLink: function () {
                 return function (item) {
@@ -72,6 +101,9 @@
                 }).done().fail(function () {
                     swal("登录失效!", "请求服务器无响应，稍后再试", "warning");
                 });
+            },
+            download(url){
+                window.open(url);
             },
             goBack (){
                 //点击后退

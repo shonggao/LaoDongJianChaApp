@@ -37,24 +37,24 @@ export default{
         this.getCaseList();
     },
     methods: {
-        getThumbs(){
-            //获取缩略图
-            this.$http.get('http://www.liulongbin.top:3005/api/getthumimages/'+this.id).then(result => {
-                if(result.body.status === 0){
-                    result.body.message.forEach((item,index) => {
-                        item.msrc = item.src;
-                        this.src = item.src;
-                        item.alt= 'picture'+index;
-                        item.title = 'Image Caption'+index;
-                        item.w = 600;
-                        item.h = 400;
-                    });
-                    this.list = result.body.message;
-                }
-            }, error =>{
-                Toast("图片获取失败");
-            })
-        },
+        // getThumbs(){
+        //     //获取缩略图
+        //     this.$http.get('http://www.liulongbin.top:3005/api/getthumimages/'+this.id).then(result => {
+        //         if(result.body.status === 0){
+        //             result.body.message.forEach((item,index) => {
+        //                 item.msrc = item.src;
+        //                 this.src = item.src;
+        //                 item.alt= 'picture'+index;
+        //                 item.title = 'Image Caption'+index;
+        //                 item.w = 600;
+        //                 item.h = 400;
+        //             });
+        //             this.list = result.body.message;
+        //         }
+        //     }, error =>{
+        //         Toast("图片获取失败");
+        //     })
+        // },
         getCaseList () {
             let vm = this;
             this.loading = true;
@@ -86,75 +86,75 @@ export default{
             // this.$router.go(-1);
             this.$router.replace('/personal');            
 		},
-        downPhoto(photoPath) {
-            var pictrueUrl = encodeURI(photoPath);
-            console.log(photoPath);
-            function saveImageToPhone(url, success, error) {
-                console.log(url);
-                var canvas, context, imageDataUrl, imageData;
-                var img = new Image();
-                img.onload = function () {
-                canvas = document.createElement('canvas');
-                canvas.width = img.width;
-                canvas.height = img.height;
-                context = canvas.getContext('2d');
-                context.drawImage(img, 0, 0);
-                try {
-                    imageDataUrl = canvas.toDataURL('image/jpeg', 1.0);
-                    imageData = imageDataUrl.replace(/data:image\/jpeg;base64,/, '');
-                    cordova.exec(
-                        success,
-                        error,
-                        'Canvas2ImagePlugin',
-                        'saveImageDataToLibrary',
-                        [imageData]
-                    );
-                }
-                catch (e) {
-                    error(e.message);
-                }
-                };
-                try {
-                    img.src = url;
-                }
-                catch (e) {
-                    error(e.message);
-                }
-            }
+        // downPhoto(photoPath) {
+        //     var pictrueUrl = encodeURI(photoPath);
+        //     console.log(photoPath);
+        //     function saveImageToPhone(url, success, error) {
+        //         console.log(url);
+        //         var canvas, context, imageDataUrl, imageData;
+        //         var img = new Image();
+        //         img.onload = function () {
+        //         canvas = document.createElement('canvas');
+        //         canvas.width = img.width;
+        //         canvas.height = img.height;
+        //         context = canvas.getContext('2d');
+        //         context.drawImage(img, 0, 0);
+        //         try {
+        //             imageDataUrl = canvas.toDataURL('image/jpeg', 1.0);
+        //             imageData = imageDataUrl.replace(/data:image\/jpeg;base64,/, '');
+        //             cordova.exec(
+        //                 success,
+        //                 error,
+        //                 'Canvas2ImagePlugin',
+        //                 'saveImageDataToLibrary',
+        //                 [imageData]
+        //             );
+        //         }
+        //         catch (e) {
+        //             error(e.message);
+        //         }
+        //         };
+        //         try {
+        //             img.src = url;
+        //         }
+        //         catch (e) {
+        //             error(e.message);
+        //         }
+        //     }
 
-            var success = function (msg) {
-            //下载成功
-                Toast("下载成功");
-            };
-            var error = function (err) {
-            //下载失败
-                Toast("下载失败");
-            };
-            saveImageToPhone(photoPath, success, error);
-        },
-        downloadIamge(imgsrc, name) {//下载图片地址和图片名
-            var image = new Image();
-            // 解决跨域 Canvas 污染问题
-            image.setAttribute("crossOrigin", "anonymous");
-            image.onload = function() {
-                var canvas = document.createElement("canvas");
-                canvas.width = image.width;
-                canvas.height = image.height;
-                var context = canvas.getContext("2d");
-                context.drawImage(image, 0, 0, image.width, image.height);
-                var url = canvas.toDataURL("image/png"); //得到图片的base64编码数据
+        //     var success = function (msg) {
+        //     //下载成功
+        //         Toast("下载成功");
+        //     };
+        //     var error = function (err) {
+        //     //下载失败
+        //         Toast("下载失败");
+        //     };
+        //     saveImageToPhone(photoPath, success, error);
+        // },
+        // downloadIamge(imgsrc, name) {//下载图片地址和图片名
+        //     var image = new Image();
+        //     // 解决跨域 Canvas 污染问题
+        //     image.setAttribute("crossOrigin", "anonymous");
+        //     image.onload = function() {
+        //         var canvas = document.createElement("canvas");
+        //         canvas.width = image.width;
+        //         canvas.height = image.height;
+        //         var context = canvas.getContext("2d");
+        //         context.drawImage(image, 0, 0, image.width, image.height);
+        //         var url = canvas.toDataURL("image/png"); //得到图片的base64编码数据
             
-                var a = document.createElement("a"); // 生成一个a元素
-                var event = new MouseEvent("click"); // 创建一个单击事件
-                a.download = name || "photo"; // 设置图片名称
-                a.href = url; // 将生成的URL设置为a.href属性
-                a.dispatchEvent(event); // 触发a的单击事件
-            };
-            image.src = imgsrc;
-        },
-        downs(){
-            this.downloadIamge('../../image/icon2.png', 'pic')
-        },
+        //         var a = document.createElement("a"); // 生成一个a元素
+        //         var event = new MouseEvent("click"); // 创建一个单击事件
+        //         a.download = name || "photo"; // 设置图片名称
+        //         a.href = url; // 将生成的URL设置为a.href属性
+        //         a.dispatchEvent(event); // 触发a的单击事件
+        //     };
+        //     image.src = imgsrc;
+        // },
+        // downs(){
+        //     this.downloadIamge('../../image/icon2.png', 'pic')
+        // },
         goFileList (caseID) {
             this.$router.push(`/personal/evidence/${caseID}/file`)
         }
