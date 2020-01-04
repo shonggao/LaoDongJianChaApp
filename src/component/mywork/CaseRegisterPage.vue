@@ -63,12 +63,16 @@
                 <div class="mui-input-row">
                     <label>案件来源：</label>
                     <select name="caseSource" id="caseSource" class="mui-select fluid" v-model="docVarList.ldbzjclaspb_anjianlaiyuan"> 
-                        <option value="12345市长热线" selected>12345市长热线</option>
-                        <option value="12333举报投诉">12333举报投诉</option>
-                        <option value="举报投诉">举报投诉</option>
-                        <option value="省市转办件">省市转办件</option>
-                        <option value="阳光信访 ">阳光信访 </option>
-                        <option value="日常巡查案件">日常巡查案件</option>
+                        <option value="日常巡查" selected>日常巡查</option>
+                        <option value="专项检查">专项检查</option>
+                        <option value="举报">举报</option>
+                        <option value="投诉">投诉</option>
+                        <option value="部门转办 ">部门转办</option>
+                        <option value="市长专线">市长专线</option>
+                        <option value="12333">12333</option>
+                        <option value="信访">信访</option>
+                        <option value="武昌市民热线">武昌市民热线</option>
+                        <option value="城市留言板">城市留言板</option>
                         <option value="其他">其他</option>
                     </select>
                 </div>
