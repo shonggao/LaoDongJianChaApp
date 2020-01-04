@@ -23,7 +23,7 @@ export default {
     },
     computed: {
         imgSrc: function () {
-            return `http://192.168.190.205:8080/fhadminfile/${this.case_id}/${this.task_id}/${this.file_name}`;
+            return `${fileurl}${this.case_id}/${this.task_id}/${this.file_name}`;
         },
         file_type () {
             return this.$route.query.file_type || "";
