@@ -7,6 +7,12 @@
                 <a class="mui-pull-right mui-icon mui-icon-right-nav" @click="addCase">保存</a>
             </header>
             <div class="card-container">
+                <form class="mui-input-group">
+                    <div class="mui-input-row">
+                        <label>案件编号：</label>
+                        <input type="text" placeholder="输入姓名" v-model="pd.ldbzjctsdjb_tsrqk_anjianbianhao">
+                    </div>
+                </form>
                 <div class="form-label">
                     <h4 class="form-title">投诉人情况</h4>
                 </div>

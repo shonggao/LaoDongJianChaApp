@@ -7,6 +7,12 @@
             <a class="mui-pull-right mui-icon mui-icon-right-nav" @click="handle('yes')" v-show="(formKey0 == formname)">保存</a>
         </header>
         <div class="card-container">
+            <form class="mui-input-group">
+                <div class="mui-input-row">
+                    <label>案件编号：</label>
+                    <input type="text" placeholder="输入姓名" v-model="docVarList.ldbzjctsdjb_tsrqk_anjianbianhao">
+                </div>
+            </form>
             <div class="form-label">
                 <h4 class="form-title">投诉人情况</h4>
             </div>
@@ -149,6 +155,7 @@ export default {
             OPINION: this.$route.query.OPINION,			//审批意见
             ASSIGNEE_: this.$route.query.ASSIGNEE_,			//待办人
             vars: [
+                "ldbzjctsdjb_tsrqk_anjianbianhao",
                 "ldbzjctsdjb_tsrqk_xingming",
                 "ldbzjctsdjb_tsrqk_xingbie",
                 "ldbzjctsdjb_tsrqk_lianxidianhua",
