@@ -98,10 +98,10 @@ var store = new Vuex.Store({
 
 
 //导入 MUI 的样式
-import './lib/mui/css/mui.min.css';
-import './lib/mui/css/icons-extra.css';
-import './lib/mui/css/mui.picker.min.css';
-import './lib/mui/css/app.css';
+import '../lib/mui/css/mui.min.css';
+import '../lib/mui/css/icons-extra.css';
+import '../lib/mui/css/mui.picker.min.css';
+import '../lib/mui/css/app.css';
 
 // 初始化MUI
 
