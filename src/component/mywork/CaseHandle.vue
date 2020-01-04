@@ -77,13 +77,15 @@
             <!-- <div class="img-container">
                 <img v-if="imgSrc !== ''" :src="imgSrc" alt="流程图" style="width: 100%;">
             </div> -->
-            <div class="mui-card" v-for="item in hitaskListSelected" :key="`hitask-${item.ID_}`">
-                <mt-cell :title="item.ACT_NAME_" :value="item.END_TIME_ ? timeFormat(item.END_TIME_) : '正在进行...'"></mt-cell>
-                <div class="mui-card-content-inner" style="padding: 0px 10px;line-height: 1.6em;">
-                    <p v-if="item.ACT_TYPE_ === 'userTask'">承办人：{{ item.ASSIGNEE_ }}</p>
-                    <p v-if="item.END_TIME_" style="color: green;"><span class="mui-icon mui-icon-checkmarkempty"></span>通过</p>
+            <template v-for="item in hitaskListSelected" >
+                <div class="mui-card" :key="`hitask-${item.ID_}`" v-if="item.ACT_NAME_">
+                    <mt-cell :title="item.ACT_NAME_" :value="item.END_TIME_ ? timeFormat(item.END_TIME_) : '正在进行...'"></mt-cell>
+                    <div class="mui-card-content-inner" style="padding: 0px 10px;line-height: 1.6em;">
+                        <p v-if="item.ACT_TYPE_ === 'userTask'">承办人：{{ item.ASSIGNEE_ }}</p>
+                        <p v-if="item.END_TIME_" style="color: green;"><span class="mui-icon mui-icon-checkmarkempty"></span>通过</p>
+                    </div>
                 </div>
-            </div>
+            </template>
         </div>
     </div>
 </template>
