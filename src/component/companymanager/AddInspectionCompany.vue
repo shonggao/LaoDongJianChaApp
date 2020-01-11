@@ -53,9 +53,9 @@
                 </div>
             </form>
             <form class="mui-input-group">
-                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('handoutDate',$event)">
+                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('SHBX',$event)">
                     <label data-options='{"type":"date"}'>社会保险登记证发证日期：</label>
-                    <input type="text" id="handoutDate" v-model="pd.SHBX" data-options='{"type":"date"}' readonly="readonly">
+                    <input type="text" id="SHBX" v-model="pd.SHBX" data-options='{"type":"date"}' readonly="readonly">
                 </div>
             </form>
             <form class="mui-input-group">
@@ -69,13 +69,13 @@
                 </div>
             </form>
             <form class="mui-input-group">
-                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('handoutDate',$event)">
+                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('GSDJFZRQ',$event)">
                     <label data-options='{"type":"date"}'>工商登记发照日期：</label>
-                    <input type="text" id="handoutDate" v-model="pd.GSDJFZRQ" data-options='{"type":"date"}' readonly="readonly">
+                    <input type="text" id="GSDJFZRQ" v-model="pd.GSDJFZRQ" data-options='{"type":"date"}' readonly="readonly">
                 </div>
-                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('effectiveDate',$event)">
+                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('GSDJYXQX',$event)">
                     <label data-options='{"type":"date"}'>工商登记有效期限：</label>
-                    <input type="text" id="effectiveDate" v-model="pd.GSDJYXQX" data-options='{"type":"date"}' readonly="readonly">
+                    <input type="text" id="GSDJYXQX" v-model="pd.GSDJYXQX" data-options='{"type":"date"}' readonly="readonly">
                 </div>
             </form>
             <form class="mui-input-group">
@@ -163,9 +163,9 @@
                 </div>  
             </form>
             <form class="mui-input-group">
-                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('handoutDate',$event)">
+                <div class="mui-input-row" data-options='{"type":"date"}' @click="openPicker('GZZFRQ',$event)">
                     <label data-options='{"type":"date"}'>工资支付日期：</label>
-                    <input type="text" id="handoutDate" v-model="pd.GZZFRQ" data-options='{"type":"date"}' readonly="readonly">
+                    <input type="text" id="GZZFRQ" v-model="pd.GZZFRQ" data-options='{"type":"date"}' readonly="readonly">
                 </div>
             </form>
             <form class="mui-input-group">
