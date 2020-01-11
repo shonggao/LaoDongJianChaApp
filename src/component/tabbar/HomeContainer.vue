@@ -18,7 +18,7 @@
                 </div>
                 <div class="count-container">
                     <div>待办任务</div>
-                    <div class="count">8</div>
+                    <div class="count">{{taskCount}}</div>
                 </div>
             </div>
             <!-- <img class="backicon-container" src="../../image/icon-background.png"> -->
@@ -111,7 +111,7 @@ export default{
             			Toast('登录失效! 请求服务器无响应,稍后再试1');
             			// vm.logOut();
             		}else if('exception' == data.result){
-            			Toast('第一次后台程序异常');
+            			Toast('后台程序异常');
             		}
             	}
             }).done().fail(function(){
@@ -120,7 +120,30 @@ export default{
                 // vm.logOut();
             });
         },
-        
+        getListCount: function(){
+            var vm = this;
+        	// var STRARTTIME = $("#STRARTTIME").val();
+        	// var ENDTIME = $("#ENDTIME").val();
+        	$.ajax({
+        		xhrFields: {
+                    withCredentials: true
+                },
+        		type: "POST",
+        		url: httpurl+'rutask/list?showCount='+-1+'&currentPage='+1,
+        		data: {KEYWORDS:"",STRARTTIME:"",ENDTIME:"",tm:new Date().getTime()},
+        		dataType:"json",
+        		success: function(data){
+        		 if("success" == data.result){
+                    console.log(data)
+                    vm.taskCount = data.page.totalResult;
+        		 }else if ("exception" == data.result){
+                    // swal("待办任务",data.exception);//显示异常
+                 }
+        		}
+        	}).done().fail(function(){
+                swal("登录失效!", "请求服务器无响应，稍后再试", "warning");
+            });
+        },
         //基本信息
         getNowUser: function(){
             var vm = this;
@@ -137,7 +160,8 @@ export default{
             			vm.user = data.USERNAME;						//用户名
                 		vm.NAME = data.NAME;							//姓名
                 		vm.fhsmsCount = data.fhsmsCount;				//站内信未读数量
-                		vm.userPhoto = httpurl+data.userPhoto;			//用户头像
+                        vm.userPhoto = httpurl+data.userPhoto;			//用户头像
+                        vm.getListCount();
                 		//vm.getTaskCount();								//获取待办任务数量
                 		//vm.getDataToOnline();
             		}else if('error' == data.result){
@@ -149,7 +173,7 @@ export default{
             		}
             	}
             }).done().fail(function(){
-                Toast('登录失效! 请求服务器无响应,稍后再试4');
+                Toast('登录失效! 请求服务器无响应,稍后再试');
                 // vm.logOut();
             });
         },
