@@ -107,6 +107,11 @@ module.exports = {
                 // ignore: ['.*']
             },
             {
+                from: path.resolve(__dirname,'./lib'),
+                to: path.resolve(__dirname,'../www/lib'),
+                // ignore: ['.*']
+            },
+            {
                 from: path.resolve(__dirname,'./index.html'),
                 to: path.resolve(__dirname,'../www'),
                 // ignore: ['.*']

@@ -24,11 +24,12 @@
                             </div>
                             <div class="mui-card-content">
                                 <div class="mui-card-content-inner" style="padding: 16px;line-height: 1.6em;">
-                                    <p>被投诉单位： {{ item.BTSDW_ }}</p>
-                                    <p>投诉人：{{ item.TSR_ }}</p>
-                                    <p>投诉人电话：{{ item.PHONE_ }}</p>
-                                    <p>案件类型： {{ item.CASE_TYPE_ }}</p>
-                                    <p>承办人：{{ item.ASSIGNEE_ }}</p>
+                                    <p>被投诉单位： {{ item.BTSDW_ | undefinedTo}}</p>
+                                    <p>所属街道： {{ item.SSJD_ | undefinedTo}}</p>
+                                    <p>投诉人：{{ item.TSR_ | undefinedTo}}</p>
+                                    <p>投诉人电话：{{ item.PHONE_ | undefinedTo}}</p>
+                                    <p>案件类型： {{ item.CASE_TYPE_ | undefinedTo}}</p>
+                                    <p>承办人：{{ item.ASSIGNEE_ | undefinedTo}}</p>
                                 </div>
                             </div>
                             <div class="mui-card-footer">
@@ -46,11 +47,12 @@
                             </div>
                             <div class="mui-card-content">
                                 <div class="mui-card-content-inner" style="padding: 16px;line-height: 1.6em;">
-                                    <p>被投诉单位： {{ item.BTSDW_ }}</p>
-                                    <p>投诉人：{{ item.TSR_ }}</p>
-                                    <p>投诉人电话：{{ item.PHONE_ }}</p>
-                                    <p>案件类型： {{ item.CASE_TYPE_ }}</p>
-                                    <p>承办人：{{ item.ASSIGNEE_ }}</p>
+                                    <p>被投诉单位： {{ item.BTSDW_ | undefinedTo}}</p>
+                                    <p>所属街道： {{ item.SSJD_ | undefinedTo}}</p>
+                                    <p>投诉人：{{ item.TSR_ | undefinedTo}}</p>
+                                    <p>投诉人电话：{{ item.PHONE_ | undefinedTo}}</p>
+                                    <p>案件类型： {{ item.CASE_TYPE_ | undefinedTo}}</p>
+                                    <p>承办人：{{ item.ASSIGNEE_ | undefinedTo}}</p>
                                     <!-- <p>承办人：{{ item.PNAME_ }}</p> -->
                                 </div>
                             </div>

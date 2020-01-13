@@ -66,7 +66,7 @@ export default{
             userPhoto: '',		//用户头像
             NAME: '',			//姓名
             fhsmsCount: 0,		//站内信未读数量
-            taskCount: 0,		//待办任务
+            taskCount: '',		//待办任务
             indexActive: true,		//底部菜单选中状态(首页)
             fhsmsActive: false,		//底部菜单选中状态(站内信)
             myimActive: false,		//底部菜单选中状态(我的通讯)
@@ -74,7 +74,6 @@ export default{
         }
     },
     created(){
-        console.log("login");
         this.$emit("pageChanged",true);
         this.init();
     },
@@ -89,7 +88,6 @@ export default{
         //购买手机端源码
         init() {
             this.goIndex();
-            this.getNowUser();
         },
         
         //进入首页
@@ -106,7 +104,7 @@ export default{
             	dataType:'json',
             	success: function(data){
             		if('success' == data.result){
-            			// vm.getNowUser();
+            			vm.getNowUser();
             		}else if('errer' == data.result){
             			Toast('登录失效! 请求服务器无响应,稍后再试1');
             			// vm.logOut();
@@ -134,7 +132,6 @@ export default{
         		dataType:"json",
         		success: function(data){
         		 if("success" == data.result){
-                    console.log(data)
                     vm.taskCount = data.page.totalResult;
         		 }else if ("exception" == data.result){
                     // swal("待办任务",data.exception);//显示异常
@@ -165,11 +162,9 @@ export default{
                 		//vm.getTaskCount();								//获取待办任务数量
                 		//vm.getDataToOnline();
             		}else if('error' == data.result){
-            			// Toast('登录失效! 请求服务器无响应,稍后再试3');
-                        location.reload();
-            			// vm.logOut();
+            			Toast('登录失效! 请求服务器无响应,稍后再试');
             		}else if('exception' == data.result){
-            			Toast('第二次后台程序异常');
+            			Toast('后台程序异常');
             		}
             	}
             }).done().fail(function(){
