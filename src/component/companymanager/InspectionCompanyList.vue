@@ -26,8 +26,8 @@
                                 <div class="cell-value"><span>{{item.TYSHXYDM | undefinedTo}}</span></div>                
                             </li>
                             <li class="mui-table-view-cell ">
-                                <div class="cell-title"><span class="cell-title-text">组织机构代码</span></div>
-                                <div class="cell-value"><span>{{item.ZZJGDM | undefinedTo}}</span></div>  
+                                <div class="cell-title"><span class="cell-title-text">所属街道</span></div>
+                                <div class="cell-value"><span>{{item.SSWGMC | undefinedTo}}</span></div>  
                             </li>
                             <li class="mui-table-view-cell">
                                 <div class="cell-title"><span class="cell-title-text">经济类型</span></div>

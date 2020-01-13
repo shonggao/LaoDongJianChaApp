@@ -89,6 +89,10 @@
                         <label>其他联系<br>方式：</label>
                         <input type="text" placeholder="输入其他联系方式" v-model="pd.ldbzjctsdjb_btsrqk_qitalianxifangshi">
                     </div>
+                    <div class="mui-input-row">
+                        <label>所属街道：</label>
+                        <input type="text" placeholder="输入所属街道" v-model="pd.ldbzjctsdjb_btsrqk_suoshujiedao">
+                    </div>
                 </form>
                 <div class="form-label">
                     <h4 class="form-title">其他</h4>

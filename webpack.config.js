@@ -1,11 +1,12 @@
 var VueLoaderPlugin = require('vue-loader/lib/plugin');
 var path = require('path');
 var webpack = require('webpack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: ['babel-polyfill','./src/main.js'],
     output: {
-        path: path.resolve(__dirname,'./dist'),
+        path: path.resolve(__dirname,'../www/dist'),
         publicPath: 'dist/',
         filename: 'build.js',
     },
@@ -83,6 +84,33 @@ module.exports = {
         ]
     },
     plugins:[
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new CopyWebpackPlugin([
+            {
+                from: path.resolve(__dirname,'./css'),
+                to: path.resolve(__dirname,'../www/css'),
+                // ignore: ['.*']
+            },
+            {
+                from: path.resolve(__dirname,'./F2'),
+                to: path.resolve(__dirname,'../www/F2'),
+                // ignore: ['.*']
+            },
+            {
+                from: path.resolve(__dirname,'./img'),
+                to: path.resolve(__dirname,'../www/img'),
+                // ignore: ['.*']
+            },
+            {
+                from: path.resolve(__dirname,'./js'),
+                to: path.resolve(__dirname,'../www/js'),
+                // ignore: ['.*']
+            },
+            {
+                from: path.resolve(__dirname,'./index.html'),
+                to: path.resolve(__dirname,'../www'),
+                // ignore: ['.*']
+            },
+        ])
     ]
 }
